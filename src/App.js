@@ -1,9 +1,10 @@
-
+import React from 'react';
+import Verification from './Components/Verification';
 
 function App() {
   return (
-    <div className="App">
-      <h1>projects setup</h1>
+    <div>
+      <Verification />
     </div>
   );
 }

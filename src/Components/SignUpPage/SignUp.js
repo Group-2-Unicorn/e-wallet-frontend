@@ -8,6 +8,13 @@ function SignUp(){
             <div className="left">
                 <img src={images} alt="logo" />
             </div>
+
+            <div className="right">
+                <div className="right-top">
+                </div>
+            </div>
         </div>
     )
 }
+
+export default SignUp

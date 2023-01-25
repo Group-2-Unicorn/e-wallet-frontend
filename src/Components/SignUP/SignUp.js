@@ -1,6 +1,9 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
+
+
+
 function SignUp(){
     return(
         <div className="Signup-container">
@@ -57,7 +60,12 @@ function SignUp(){
                             </Link>
                         </p>
                 </div>
-                <button className="signup-btn">Sign Up</button>
+                <button className="signup-btn">
+                    <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
+                        {""}
+                            Sign Up
+                    </Link>
+                </button>
             </div>
         </div>
     )

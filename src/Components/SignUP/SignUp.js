@@ -51,20 +51,20 @@ function SignUp(){
 
                 </form>
             
-                <div className="remember">
+                <div className="optionsContainer">
                     <p className='signup-option'>Already have an account?</p>
                         <p>
                             <Link className="login-option" to="/LogIn" style={{textDecoration: "none"}}>
                                 {""}
-                                Login
+                                LogIn
                             </Link>
                         </p>
                 </div>
                 <button className="signup-btn">
                     <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
                         {""}
-                            Sign Up
                     </Link>
+                   <span className="signbtn">Sign Up</span> 
                 </button>
             </div>
         </div>

@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import ForgetPassword from "./Component/ForgetPassword/ForgetPassword";
@@ -20,7 +19,6 @@ function App() {
           </Routes>
         </div>
       </Router>
-
     </div>
   );
 }

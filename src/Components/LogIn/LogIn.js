@@ -69,6 +69,7 @@ function LogIn() {
                             <span>Sign Up</span>
                         </Link>
                     </p>
+                    
                 </form>
             </div>
         </div>

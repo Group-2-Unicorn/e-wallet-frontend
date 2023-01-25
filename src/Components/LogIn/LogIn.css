@@ -1,14 +1,17 @@
 .login{
     color: white;
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 5rem;
-    height: 665px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    /* grid-template-columns: auto auto;
+    column-gap: 5rem; */
+    height: auto;
     width: 100%;
 }
 
 .login_left{
-    background-image: url(../../Assets/login.jpeg);
+    background-image: url('../Assets/login.jpeg');
     background-size: cover;
     background-position: center;
 }

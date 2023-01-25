@@ -1,0 +1,14 @@
+.left-side {
+    float: left;
+    
+}
+
+.Signup-container {
+    background-image: url(../Assets/login.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+.form-container{
+    float: right;
+}

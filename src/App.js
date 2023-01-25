@@ -1,13 +1,24 @@
-import React from 'react';
-import Verification from '../src/Components/VerifyPage/Verification'
-import SignUp from './Components/SignUpPage/SignUp';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import ForgetPassword from "./Component/ForgetPassword/ForgetPassword";
+import LogIn from "./Component/LogIn/LogIn";
+import SignUp from "./Component/SignUP/SignUp";
+
+
+
 
 function App() {
   return (
-    <div>
-      {/* <button>Verify</button> */}
-      <SignUp />
-      {/* <Verification /> */}
+    <div className="App">
+      <Router>
+        <div>
+          <Routes>
+            <Route path="/" element={<LogIn/>} />
+            <Route path="/SignUp" element={<SignUp/>} />
+            <Route path="/ForgetPassword" element={<ForgetPassword/>} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }

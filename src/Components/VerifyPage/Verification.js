@@ -1,5 +1,6 @@
 import React from "react";
 import './verify.css'
+import image from "..//"
 
 function Verification() {
   return (

@@ -62,13 +62,17 @@ function LogIn() {
                     <button className="login_submit" onClick={postData}>
                         Log In
                     </button>
+                    <div className="sign_link">
                     <p>
                         Dont't have an Account?
-                        <Link to="/SignUp">
+                    </p>
+                    <p>
+                    <Link to="/SignUp">
                             {""}
                             <span>Sign Up</span>
                         </Link>
-                    </p>
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>

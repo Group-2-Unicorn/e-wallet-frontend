@@ -67,3 +67,7 @@
     width: 100%;
 }
 
+.sign_link{
+    display: flex;
+    justify-content: space-between;
+}

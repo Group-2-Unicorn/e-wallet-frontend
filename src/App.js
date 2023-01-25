@@ -5,9 +5,9 @@ import SignUp from './Components/SignUpPage/SignUp';
 function App() {
   return (
     <div>
-      <button>Verify</button>
+      {/* <button>Verify</button> */}
       <SignUp />
-      <Verification />
+      {/* <Verification /> */}
     </div>
   );
 }

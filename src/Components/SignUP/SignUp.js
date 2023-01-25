@@ -1,12 +1,11 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
-import LogIn from "../LogIn/LogIn";
-
+import image from "../Assets/img.jpeg";
 function SignUp(){
     return(
         <div className="Signup-container">
             <div className="left-side"> 
-                <img src="../Assets/img.jpeg" alt=""/>
+                <img className="images" src={image} alt=""/>
             </div>
 
             <div className="form-container">
@@ -52,12 +51,13 @@ function SignUp(){
                 <div className="remember">
                     <p className='signup-option'>Already have an account?</p>
                         <p>
-                            <Link className="pass" to="/LogIn" style={{textDecoration: "none"}}>
+                            <Link className="login-option" to="/LogIn" style={{textDecoration: "none"}}>
                                 {""}
                                 Login
                             </Link>
                         </p>
                 </div>
+                <button className="signup-btn">Sign Up</button>
             </div>
         </div>
     )

@@ -39,6 +39,12 @@ input[type=text] {
 
   }
 
+.optionsContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .Signup-container {
     height: 343px;
 }
@@ -68,20 +74,21 @@ form {
 }
 
 .login-option {
+    margin-left: 60px;
         
-    width: 117px;
+    /* width: 117px;
     height: 29px;
-    margin-right: 175px;
+    margin-right: 175px; */
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 21.1556px;
-    line-height: 25px;
+    /* line-height: 25px;
     display: flex;
     align-items: flex-end;
     text-align: right;
-    text-decoration-line: underline;
+    text-decoration-line: underline; */
 
     color: #55229E;
     /* Inside auto layout */
@@ -93,7 +100,15 @@ form {
 
 .form-container{
     float: right;
+    margin-top: 65px;
 
+}
+
+.signbtn{
+    display: center;
+    justify-content: center;
+    justify-items: center;
+    margin-left: 60px;
 }
 
 .signup-btn{

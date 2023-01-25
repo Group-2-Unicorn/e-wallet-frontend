@@ -27,14 +27,14 @@ function LogIn() {
   return (
     <div className="login">
       <div className="login_left">
-        <img src={LoginImg}/>
+        <img src={LoginImg} alt=""/>
       </div>
       <div className="login_right">
-        <h2>Welcome Back!</h2>
+        <h2 >Welcome Back!</h2>
         <h4>Log in to your Dashboard</h4>
         <div>
             <div>
-          <label>
+          <label className="email-box">
             <input
             placeholder="Email"
               className="input_box"
@@ -60,7 +60,7 @@ function LogIn() {
           <div className="remember">
             <div className="checker">
               <input type="checkbox" value={postData.rememberMe}/>
-              <span>Remember Me</span>
+              <span className="rem-me">Remember Me</span>
             </div>
               <p>                
                 <Link
@@ -78,7 +78,7 @@ function LogIn() {
             Log In
           </button>
           <div className="sign_link">
-            <p>Dont't have an Account?</p>
+            <p>Don't have an Account?</p>
             <p>
               <Link to="/SignUp">
                 {""}

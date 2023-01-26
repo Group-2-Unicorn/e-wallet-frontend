@@ -2,6 +2,7 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
 import React, { useState} from "react";
+import Verification from "../VerifyPage/Verification";
 
 
 
@@ -68,12 +69,13 @@ function SignUp(){
                     to="/Verification" 
                     onClick={() => setShow(true)}
                     >
-                    <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
+                    <Link className="login-option" style={{textDecoration: "none"}}>
                         {""}
                     </Link>
                     <a href="/Verification" style={{textDecoration: "none"}}>
                    <span className="signbtn">Sign Up</span> 
                    </a></button>
+                   <Verification onClose={() => setShow(false)} show={show} />
             </div>
         </div>
     )

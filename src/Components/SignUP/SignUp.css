@@ -109,6 +109,8 @@ form {
     justify-content: center;
     justify-items: center;
     margin-left: 60px;
+    background: #55229E;
+    color: #FFFFFF;
 }
 
 .signup-btn{

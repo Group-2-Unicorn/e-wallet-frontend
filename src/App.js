@@ -4,6 +4,7 @@ import ForgetPassword from "././Components/ForgetPassword/ForgetPassword";
 import LogIn from "././Components/LogIn/LogIn";
 import SignUp from "./Components/SignUP/SignUp";
 import Verification from "./Components/VerifyPage/Verification";
+import OTP from "./Components/OTPInputPage/OTP";
 
 
 
@@ -16,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LogIn/>} />
             <Route path="/SignUp" element={<SignUp/>} />
-            <Route path="/Verification"  element={<LogIn /> } />
+            <Route path="/Verification"  element={<OTP /> } />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           </Routes>
         </div>

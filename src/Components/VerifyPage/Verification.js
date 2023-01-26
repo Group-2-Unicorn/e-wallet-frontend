@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './verify.css'
-
 import SignUp from "../SignUP/SignUp";
 import { Link } from "react-router-dom";
 
@@ -9,6 +8,20 @@ const Verification = props => {
   if (!props.show){
     return null
   }
+
+  const close = (e) => {
+    if (e.target.className === 'content-container'){
+      props.onClose()
+    }
+  }
+
+  useEffect(() => {
+    document.body.addEventListener('click', close)
+    return () => {
+      document.body.removeEventListener('click', close)
+    }
+  }, [])
+
   return (
     <div className="verify-container">
       <div className="Signup-container">

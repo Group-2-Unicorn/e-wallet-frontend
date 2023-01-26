@@ -9,18 +9,18 @@ const Verification = props => {
     return null
   }
 
-  const close = (e) => {
-    if (e.target.className === 'content-container'){
-      props.onClose()
-    }
-  }
+  // const close = (e) => {
+  //   if (e.target.className === 'content-container'){
+  //     props.onClose()
+  //   }
+  // }
 
-  useEffect(() => {
-    document.body.addEventListener('click', close)
-    return () => {
-      document.body.removeEventListener('click', close)
-    }
-  }, [])
+  // useEffect(() => {
+  //   document.body.addEventListener('click', close)
+  //   return () => {
+  //     document.body.removeEventListener('click', close)
+  //   }
+  // }, [])
 
   return (
     <div className="verify-container">

@@ -1,5 +1,18 @@
-.Container {
+.content-holder{
+
+    background: rgba(37, 32, 41, 0.4);
+    width: 65%;
     position: fixed;
+ 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(37, 32, 41, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* position: fixed;
     left: 59.14%;
     right: 10.59%;
     top: 45.39%;
@@ -8,20 +21,25 @@
     border-radius: 16.7628px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .content{
+    background: #FFFFFF;
+    border-radius: 16.7628px;
     /* position: absolute; */
     left: 61.23%;
-    right: 13.31%;
-    top: 49.06%;
-    bottom: 45.3%;
+    font-style: normal;
+    padding: 40px;
+    font-size: 20px;
+
+    width: 45%;
+    margin-right: 65px;
 
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 100;
+    font-size: 15px;
     line-height: 23px;
     display: flex;
     align-items: center;

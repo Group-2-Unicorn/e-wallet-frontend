@@ -1,10 +1,13 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
+import React, { useState} from "react";
 
 
 
 function SignUp(){
+    const [show, setShow] = useState(false);
+
     return(
         <div className="Signup-container">
             <div className="left-side"> 
@@ -60,12 +63,17 @@ function SignUp(){
                             </Link>
                         </p>
                 </div>
-                <button className="signup-btn">
+                <button 
+                    className="signup-btn"
+                    to="/Verification" 
+                    onClick={() => setShow(true)}
+                    >
                     <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
                         {""}
                     </Link>
+                    <a href="/Verification" style={{textDecoration: "none"}}>
                    <span className="signbtn">Sign Up</span> 
-                </button>
+                   </a></button>
             </div>
         </div>
     )

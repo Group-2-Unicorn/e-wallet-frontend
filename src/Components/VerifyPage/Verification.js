@@ -1,6 +1,6 @@
 import React from "react";
 import './verify.css'
-
+import image from "../Assets/img.jpeg"
 import SignUp from "../SignUP/SignUp";
 import { Link } from "react-router-dom";
 
@@ -13,6 +13,7 @@ const Verification = props => {
     <div className="verify-container">
       <div className="Signup-container">
           <div className="left-side"> 
+            <img className="images" src={image} alt=""/>
           </div>
 
         <div className="right-side-container">
@@ -71,30 +72,21 @@ const Verification = props => {
             </div>
             <button 
               className="signup-btn"
-              to="/LogIn" 
-             
+                to="/Verification" 
             >
-            <Link 
-              className="login-option" 
-              to="/LogIn" 
-              style={{textDecoration: "none"}}>
-              {""}
+            <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
+                {""}
             </Link>
-              <a 
-                href="/LogIn" 
-                style={{textDecoration: "none"}}>
+              <a href="/Verification" style={{textDecoration: "none"}}>
                 <span className="signbtn">Sign Up</span> 
               </a></button>
             </div>
           </div>
         </div>
-      <div className="content-container" onClick={props.onClose}>
+      <div className="content-container">
         
-        <div className="content-holder" onClick={e => e.stopPropagation()}>
-          <h1 
-            className="content"  
-            onClick={props.onClose}
-          > Kindly Check your mail to see your OTP number for Account verification</h1>
+        <div className="content-holder">
+          <h1 className="content"> Kindly Check your mail to see your OTP number for Account verification</h1>
         </div>
       </div>
     </div>

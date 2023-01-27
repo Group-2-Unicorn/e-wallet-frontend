@@ -2,12 +2,17 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
 import React, { useState} from "react";
+import Modal from react-modal
 import Verification from "../VerifyPage/Verification";
 
 
 
 function SignUp(){
     const [show, setShow] = useState(false);
+
+    const setModalOpenToTrue = () => {
+        setShow(true);
+    }
 
     return(
         <div className="Signup-container">
@@ -20,7 +25,7 @@ function SignUp(){
                     <h3 className='welcome'>Welcome!</h3>
                     <p className='signup-info'>Sign up by entering the information below</p>
                 </div>
-                <form>
+                <form className="sign-up-form">
                     <label>
                         <input 
                             className="input_box"
@@ -69,7 +74,8 @@ function SignUp(){
                 <button 
                     className="signup-btn"
                     to="/Verification" 
-                    onClick={() => setShow(true)}
+                    onClick={setModalOpenToTrue}
+                    style={{textDecoration: "none"}}
                     >
                     <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
                         {""}

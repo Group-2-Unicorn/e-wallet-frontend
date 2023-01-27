@@ -198,32 +198,15 @@
     background: #FFFFFF;
     border-radius: 12.0889px;
     width: 100%;
-<<<<<<< HEAD
-    padding: 20px 20px;
-    margin: 8px 0;
-    border: 1px solid #C4C4C4;
-=======
     padding: 12px 20px;
     margin: 8px 0;
     border: 1px solid #C4C4C4;
    
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     display: flex;
     align-items: flex-end;
-<<<<<<< HEAD
-  } */
-
-/* .email-box{
-    display: flex;
-    flex-direction: column;
-    width: 142%;
-  } */
-
-/* input[type=password] {
-=======
   }
 
   .email-box{
@@ -238,28 +221,17 @@
 
   input[type=password] {
 
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     box-sizing: border-box;
     background: #FFFFFF;
     border-radius: 12.0889px;
     width: 100%;
-<<<<<<< HEAD
-    padding: 15px 20px;
-    margin: 8px 0;
-    border: 1px solid #C4C4C4;
-=======
     padding: 12px 20px;
     margin: 8px 0;
     border: 1px solid #C4C4C4;
    
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     display: flex;
     align-items: flex-end;
-<<<<<<< HEAD
-  } */
-=======
   }
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889

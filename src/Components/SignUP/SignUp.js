@@ -27,7 +27,8 @@ function SignUp(){
                 </div>
                 <form className="sign-up-form">
                     <label>
-                        <input className="input_box"
+                        <input 
+                            className="input_box"
                             type="text"
                             placeholder="First Name"
                             required
@@ -35,7 +36,8 @@ function SignUp(){
                     </label>
 
                     <label>
-                        <input className="input_box"
+                        <input 
+                            className="input_box"
                             type="text"
                             placeholder="Last Name"
                             required
@@ -75,7 +77,7 @@ function SignUp(){
                     onClick={setModalOpenToTrue}
                     style={{textDecoration: "none"}}
                     >
-                    <Link className="login-option" style={{textDecoration: "none"}}>
+                    <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
                         {""}
                     </Link>
                     <a href="/Verification" style={{textDecoration: "none"}}>

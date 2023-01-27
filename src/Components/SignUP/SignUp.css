@@ -22,7 +22,6 @@
     font-size: 18.1333px;
     line-height: 21px;
     text-align: center;
-
     color: #000000;
 }
 
@@ -46,20 +45,21 @@ input[type=text] {
 }
 
 .Signup-container {
-    height: 345px;
+    height: 343px;
 }
 
 form {
     width: 70%;
     text-align: center;
     margin: 0 auto;
-    /* padding: 20px; */
+    padding: 20px;
     background-color: #FFFFFF;
     border-radius: 12.088889122009277px;
 }
 
 .images{
     width: 180%;
+    height: 99vh;
 }
 
 .signup-option {
@@ -75,19 +75,13 @@ form {
 
 .login-option {
     margin-left: 60px;
-        
-    /* width: 117px;
-    height: 29px;
-    margin-right: 175px; */
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 21.1556px;
-
     color: #55229E;
-    /* Inside auto layout */
-
+    color: #55229E;
+    color: #55229E;
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -100,6 +94,7 @@ form {
 }
 
 .signbtn{
+    color: white;
     display: center;
     justify-content: center;
     justify-items: center;
@@ -116,7 +111,6 @@ form {
     border: 1.51111px solid #56229E; 
     border-radius: 12.0889px;
     color: #FFFFFF;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -125,5 +119,4 @@ form {
     align-items: center;
     text-align: center;
     justify-content: center;
-
 }

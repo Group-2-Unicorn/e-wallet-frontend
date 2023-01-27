@@ -16,8 +16,9 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<LogIn/>} />
+            <Route path="/Login" element={<LogIn/>} />
             <Route path="/SignUp" element={<SignUp/>} />
-            <Route path="/Verification"  element={<OTP /> } />
+            <Route path="/Verification" element={<Verification /> } />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           </Routes>
         </div>

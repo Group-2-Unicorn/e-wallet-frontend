@@ -1,11 +1,12 @@
-
 * {
   margin: 0%;
 }
 
+
 .login {
   display: flex;
   width: 100%;
+  justify-content: 40%;
 }
 
 .login img {
@@ -14,15 +15,17 @@
 }
 
 .login_right {
-  margin: 10rem 0rem 0rem 15rem;
-  width: 40%;
+  margin: 6rem 0rem 0rem 15rem;
+  width: 30%;
 }
 
-.input_box {
+.login input {
+  padding: 17px;
   border: 1px solid gray;
   border-radius: 8px;
   background-color: white;
   color: white;
+  width: 90%;
 }
 
 .login h2 {
@@ -35,11 +38,10 @@
   color: black;
   font-weight: 500;
   padding: 1rem 0rem 0rem 7.3rem;
-  margin-bottom: 20px;
 }
 
 .login p {
-  color: #c4c4c4;
+  color: black;
   font-weight: 500;
 }
 
@@ -52,15 +54,15 @@
   padding-top: 5%;
   font-size: 12px;
   display: flex;
-  column-gap: 36%;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .login_submit {
   font-family: Roboto;
   font-weight: bold;
-  background-color: #55229e;
+  background-color: rgb(114, 27, 196);
   border: none;
   outline: none;
   color: white;
@@ -68,18 +70,14 @@
   padding: 20px;
   font-size: large;
   cursor: pointer;
-  width: 70%;
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 30px;
 }
 
 .sign_link {
   display: flex;
-  column-gap: 31%;
+  justify-content: space-between;
   margin-top: 30px;
-}
-
-.sign_span {
-  color: #55229e;
 }
 
 .checker {
@@ -89,8 +87,9 @@
 .checker input {
   height: 25%;
 }
-
-.rem-me {
+.checker span {
   width: 500%;
-  margin-left: 10px;
+}
+.input_box {
+  margin-top: 30px;
 }

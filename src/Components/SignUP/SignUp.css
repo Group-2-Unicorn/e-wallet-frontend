@@ -46,32 +46,20 @@ input[type=text] {
 }
 
 .Signup-container {
-<<<<<<< HEAD
-    height: 343px;
-=======
     height: 345px;
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
 }
 
 form {
     width: 70%;
     text-align: center;
     margin: 0 auto;
-<<<<<<< HEAD
-    padding: 20px;
-=======
     /* padding: 20px; */
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     background-color: #FFFFFF;
     border-radius: 12.088889122009277px;
 }
 
 .images{
     width: 180%;
-<<<<<<< HEAD
-    height: 99vh;
-=======
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
 }
 
 .signup-option {
@@ -87,26 +75,19 @@ form {
 
 .login-option {
     margin-left: 60px;
-<<<<<<< HEAD
-=======
         
     /* width: 117px;
     height: 29px;
     margin-right: 175px; */
 
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 21.1556px;
-<<<<<<< HEAD
-    color: #55229E;
-=======
 
     color: #55229E;
     /* Inside auto layout */
 
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -119,19 +100,12 @@ form {
 }
 
 .signbtn{
-<<<<<<< HEAD
-    color: white;
-=======
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     display: center;
     justify-content: center;
     justify-items: center;
     margin-left: 60px;
-<<<<<<< HEAD
-=======
     background: #55229E;
     color: #FFFFFF;
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
 }
 
 .signup-btn{
@@ -152,8 +126,4 @@ form {
     text-align: center;
     justify-content: center;
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889

@@ -34,9 +34,9 @@ function LogIn() {
         <h4>Log in to your Dashboard</h4>
         <div>
             <div>
-          <label className="email-box">
+          <label>
             <input
-            placeholder="Email"
+              placeholder="Email"
               className="input_box"
               type="text"
               value={email}
@@ -50,7 +50,7 @@ function LogIn() {
             <input
               placeholder="Password"
               className="input_box"
-              type="password"
+              type="text"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -78,11 +78,11 @@ function LogIn() {
             Log In
           </button>
           <div className="sign_link">
-            <p>Don't have an Account?</p>
+            <p className="dont_have">Don't have an Account?</p>
             <p>
               <Link to="/SignUp">
                 {""}
-                <span>Sign Up</span>
+                <span className="sign_span">Sign Up</span>
               </Link>
             </p>
           </div>

@@ -46,14 +46,14 @@ input[type=text] {
 }
 
 .Signup-container {
-    height: 343px;
+    height: 345px;
 }
 
 form {
     width: 70%;
     text-align: center;
     margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
     background-color: #FFFFFF;
     border-radius: 12.088889122009277px;
 }
@@ -84,11 +84,6 @@ form {
     font-style: normal;
     font-weight: 500;
     font-size: 21.1556px;
-    /* line-height: 25px;
-    display: flex;
-    align-items: flex-end;
-    text-align: right;
-    text-decoration-line: underline; */
 
     color: #55229E;
     /* Inside auto layout */

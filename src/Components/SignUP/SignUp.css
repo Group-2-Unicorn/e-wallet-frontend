@@ -1,0 +1,121 @@
+.left-side {
+    float: left;
+    width: 290px;
+    height: 300px;
+    
+}
+
+.welcome {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27.2px;
+    line-height: 32px;
+    color: #000000;
+    text-align: center;
+}
+
+.signup-info{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18.1333px;
+    line-height: 21px;
+    text-align: center;
+
+    color: #000000;
+}
+
+input[type=text] {
+    box-sizing: border-box;
+    background: #FFFFFF;
+   
+    border-radius: 12.0889px;
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #C4C4C4;
+    border-radius: 12.088889122009277px;
+
+  }
+
+.optionsContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.Signup-container {
+    height: 343px;
+}
+
+form {
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 12.088889122009277px;
+}
+
+.images{
+    width: 180%;
+    height: 99vh;
+}
+
+.signup-option {
+    width: 330.93px;
+    height: 28.71px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21.1556px;
+    margin-left: 230px;
+    color: #C4C4C4;
+}
+
+.login-option {
+    margin-left: 60px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21.1556px;
+    color: #55229E;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.form-container{
+    float: right;
+    margin-top: 65px;
+
+}
+
+.signbtn{
+    color: white;
+    display: center;
+    justify-content: center;
+    justify-items: center;
+    margin-left: 60px;
+}
+
+.signup-btn{
+    width: 50%;
+    height: 50px;
+    margin-left: 230px;
+    background: #55229E;
+    border: 1.51111px solid #56229E; 
+    border-radius: 12.0889px;
+    color: #FFFFFF;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}

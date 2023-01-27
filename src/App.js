@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import ForgetPassword from "./Component/ForgetPassword/ForgetPassword";
-import LogIn from "./Component/LogIn/LogIn";
-import SignUp from "./Component/SignUP/SignUp";
+import ForgetPassword from "././Components/ForgetPassword/ForgetPassword";
+import LogIn from "././Components/LogIn/LogIn";
+import SignUp from "./Components/SignUP/SignUp";
+import Verification from "./Components/VerifyPage/Verification";
 
 
 
@@ -14,7 +15,9 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<LogIn/>} />
+            <Route path="/LogIn" element={<LogIn/>} />
             <Route path="/SignUp" element={<SignUp/>} />
+            <Route path="/Verification" element={<Verification /> } />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           </Routes>
         </div>

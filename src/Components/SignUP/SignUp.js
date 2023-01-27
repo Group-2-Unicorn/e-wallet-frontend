@@ -20,7 +20,7 @@ function SignUp(){
                     <h3 className='welcome'>Welcome!</h3>
                     <p className='signup-info'>Sign up by entering the information below</p>
                 </div>
-                <form className="sign-up-form">
+                <form>
                     <label>
                         <input className="input_box"
                             type="text"

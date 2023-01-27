@@ -22,7 +22,6 @@
     font-size: 18.1333px;
     line-height: 21px;
     text-align: center;
-
     color: #000000;
 }
 
@@ -39,6 +38,12 @@ input[type=text] {
 
   }
 
+.optionsContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .Signup-container {
     height: 343px;
 }
@@ -54,6 +59,7 @@ form {
 
 .images{
     width: 180%;
+    height: 99vh;
 }
 
 .signup-option {
@@ -68,24 +74,12 @@ form {
 }
 
 .login-option {
-        
-    width: 117px;
-    height: 29px;
-    margin-right: 175px;
-
+    margin-left: 60px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 21.1556px;
-    line-height: 25px;
-    display: flex;
-    align-items: flex-end;
-    text-align: right;
-    text-decoration-line: underline;
-
     color: #55229E;
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -93,7 +87,16 @@ form {
 
 .form-container{
     float: right;
+    margin-top: 65px;
 
+}
+
+.signbtn{
+    color: white;
+    display: center;
+    justify-content: center;
+    justify-items: center;
+    margin-left: 60px;
 }
 
 .signup-btn{
@@ -104,7 +107,6 @@ form {
     border: 1.51111px solid #56229E; 
     border-radius: 12.0889px;
     color: #FFFFFF;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -113,5 +115,4 @@ form {
     align-items: center;
     text-align: center;
     justify-content: center;
-
 }

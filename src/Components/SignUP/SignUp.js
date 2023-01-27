@@ -1,7 +1,13 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
+import React, { useState} from "react";
+
+
+
 function SignUp(){
+    const [show, setShow] = useState(false);
+
     return(
         <div className="Signup-container">
             <div className="left-side"> 
@@ -15,7 +21,8 @@ function SignUp(){
                 </div>
                 <form>
                     <label>
-                        <input className="input_box"
+                        <input 
+                            className="input_box"
                             type="text"
                             placeholder="First Name"
                             required
@@ -23,7 +30,8 @@ function SignUp(){
                     </label>
 
                     <label>
-                        <input className="input_box"
+                        <input 
+                            className="input_box"
                             type="text"
                             placeholder="Last Name"
                             required
@@ -48,16 +56,26 @@ function SignUp(){
 
                 </form>
             
-                <div className="remember">
+                <div className="optionsContainer">
                     <p className='signup-option'>Already have an account?</p>
                         <p>
                             <Link className="login-option" to="/LogIn" style={{textDecoration: "none"}}>
                                 {""}
-                                Login
+                                LogIn
                             </Link>
                         </p>
                 </div>
-                <button className="signup-btn">Sign Up</button>
+                <button 
+                    className="signup-btn"
+                    to="/Verification" 
+                    onClick={() => setShow(true)}
+                    >
+                    <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
+                        {""}
+                    </Link>
+                    <a href="/Verification" style={{textDecoration: "none"}}>
+                   <span className="signbtn">Sign Up</span> 
+                   </a></button>
             </div>
         </div>
     )

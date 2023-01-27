@@ -27,16 +27,16 @@ function LogIn() {
   return (
     <div className="login">
       <div className="login_left">
-        <img src={LoginImg}/>
+        <img src={LoginImg} alt=""/>
       </div>
       <div className="login_right">
-        <h2>Welcome Back!</h2>
+        <h2 >Welcome Back!</h2>
         <h4>Log in to your Dashboard</h4>
         <div>
             <div>
           <label>
             <input
-            placeholder="Email"
+              placeholder="Email"
               className="input_box"
               type="text"
               value={email}
@@ -50,7 +50,7 @@ function LogIn() {
             <input
               placeholder="Password"
               className="input_box"
-              type="password"
+              type="text"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -60,7 +60,7 @@ function LogIn() {
           <div className="remember">
             <div className="checker">
               <input type="checkbox" value={postData.rememberMe}/>
-              <span>Remember Me</span>
+              <span className="rem-me">Remember Me</span>
             </div>
               <p>                
                 <Link
@@ -78,11 +78,11 @@ function LogIn() {
             Log In
           </button>
           <div className="sign_link">
-            <p>Dont't have an Account?</p>
+            <p className="dont_have">Don't have an Account?</p>
             <p>
               <Link to="/SignUp">
                 {""}
-                <span>Sign Up</span>
+                <span className="sign_span">Sign Up</span>
               </Link>
             </p>
           </div>

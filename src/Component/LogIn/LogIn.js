@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import "./LogIn.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import LoginImg from "../Assets/login.jpeg";
+import LoginImg from "../../Assets/login.jpeg";
 
 function LogIn() {
   const [email, setEmail] = useState([]);
@@ -28,16 +27,16 @@ function LogIn() {
   return (
     <div className="login">
       <div className="login_left">
-        <img src={LoginImg} alt=""/>
+        <img src={LoginImg}/>
       </div>
       <div className="login_right">
-        <h2 >Welcome Back!</h2>
+        <h2>Welcome Back!</h2>
         <h4>Log in to your Dashboard</h4>
         <div>
             <div>
           <label>
             <input
-              placeholder="Email"
+            placeholder="Email"
               className="input_box"
               type="text"
               value={email}
@@ -51,7 +50,7 @@ function LogIn() {
             <input
               placeholder="Password"
               className="input_box"
-              type="text"
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -61,7 +60,7 @@ function LogIn() {
           <div className="remember">
             <div className="checker">
               <input type="checkbox" value={postData.rememberMe}/>
-              <span className="rem-me">Remember Me</span>
+              <span>Remember Me</span>
             </div>
               <p>                
                 <Link
@@ -79,11 +78,11 @@ function LogIn() {
             Log In
           </button>
           <div className="sign_link">
-            <p className="dont_have">Don't have an Account?</p>
+            <p>Dont't have an Account?</p>
             <p>
               <Link to="/SignUp">
                 {""}
-                <span className="sign_span">Sign Up</span>
+                <span>Sign Up</span>
               </Link>
             </p>
           </div>

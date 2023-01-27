@@ -80,6 +80,8 @@ form {
     font-weight: 500;
     font-size: 21.1556px;
     color: #55229E;
+    color: #55229E;
+    color: #55229E;
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -97,6 +99,8 @@ form {
     justify-content: center;
     justify-items: center;
     margin-left: 60px;
+    background: #55229E;
+    color: #FFFFFF;
 }
 
 .signup-btn{

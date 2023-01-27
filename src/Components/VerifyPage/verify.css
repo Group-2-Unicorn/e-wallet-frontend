@@ -1,7 +1,11 @@
 .content-holder{
 
     background: rgba(37, 32, 41, 0.4);
+<<<<<<< HEAD
     width: 65%;
+=======
+    width: 63%;
+>>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
     position: fixed;
  
     top: 0;

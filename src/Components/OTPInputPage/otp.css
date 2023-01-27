@@ -1,0 +1,94 @@
+.otp-container {
+    background: #FFFFFF;
+}
+
+
+input.input-btn{
+    margin-top: 70px;
+    margin-bottom: 70px;
+    width: 6%;
+    float: right;
+    margin-right: 40px;
+
+    background: #FFFFFF;
+    border: 1.7px solid #C4C4C4;
+    border-radius: 15.4426px;
+}
+
+.otp-text{
+    margin-left: 480px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.otp-left-side{
+    width: 290px;
+    height: 300px;
+    background: rgba(85, 34, 158, 0.63);
+}
+
+.image{
+    width: 180%;
+}
+
+.header-text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 32px;
+
+    align-items: flex-end;
+    text-align: center;
+
+    color: #000000;
+}
+
+.otp-form-container{
+    position: absolute;
+    left: 80px;
+    top: 210px;
+    width: 95%;
+}
+
+.otp-btn{
+    margin-top: 50px;
+    width: 27%;
+    height: 50px;
+    margin-left: 685px;
+    background: #55229E;
+    border: 1.51111px solid #56229E; 
+    border-radius: 12.0889px;
+    color: #FFFFFF;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.otpbtn{
+    text-decoration: "none";
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 41.1803px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+}

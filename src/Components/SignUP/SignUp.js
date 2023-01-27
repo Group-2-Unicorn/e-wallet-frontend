@@ -2,6 +2,10 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
 import React, { useState} from "react";
+<<<<<<< HEAD
+=======
+import Verification from "../VerifyPage/Verification";
+>>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
 
 
 
@@ -21,8 +25,12 @@ function SignUp(){
                 </div>
                 <form>
                     <label>
+<<<<<<< HEAD
                         <input 
                             className="input_box"
+=======
+                        <input className="input_box"
+>>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
                             type="text"
                             placeholder="First Name"
                             required
@@ -30,8 +38,12 @@ function SignUp(){
                     </label>
 
                     <label>
+<<<<<<< HEAD
                         <input 
                             className="input_box"
+=======
+                        <input className="input_box"
+>>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
                             type="text"
                             placeholder="Last Name"
                             required
@@ -70,12 +82,20 @@ function SignUp(){
                     to="/Verification" 
                     onClick={() => setShow(true)}
                     >
+<<<<<<< HEAD
                     <Link className="login-option" to="/Verification" style={{textDecoration: "none"}}>
+=======
+                    <Link className="login-option" style={{textDecoration: "none"}}>
+>>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
                         {""}
                     </Link>
                     <a href="/Verification" style={{textDecoration: "none"}}>
                    <span className="signbtn">Sign Up</span> 
                    </a></button>
+<<<<<<< HEAD
+=======
+                   <Verification onClose={() => setShow(false)} show={show} />
+>>>>>>> baa92fa7d723defcc842827d1a5d347c5b69b889
             </div>
         </div>
     )

@@ -1,10 +1,10 @@
 export function getUserDetails(){
-    return fetch('http://localhost:3000/userDetail')
+    return fetch('http://localhost:8080/api/v1/registration/register')
     .then(data => data.json)
 }
 
 export function setDetails(userDetails){
-    return fetch('http://localhost:3000/userDetail', {
+    return fetch('http://localhost:8080/api/v1/registration/register', {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'

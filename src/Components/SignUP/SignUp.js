@@ -27,7 +27,7 @@ function SignUp(){
     },[]);
 
 
-    
+
     const [show, setShow] = useState(false);
    
     return(

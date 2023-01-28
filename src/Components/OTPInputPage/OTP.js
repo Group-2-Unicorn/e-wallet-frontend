@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import "../VerifyPage/verify.css"
 import './otp.css'
 import image from "../Assets/img.jpeg";
-
-
 
 
 const OTP = () => {

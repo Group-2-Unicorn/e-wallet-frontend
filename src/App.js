@@ -1,15 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
 import "./App.css";
 import ForgetPassword from "././Components/ForgetPassword/ForgetPassword";
 import LogIn from "././Components/LogIn/LogIn";
 import SignUp from "./Components/SignUP/SignUp";
-import Verification from "./Components/VerifyPage/Verification";
+import Verification from "./Components/Verification/Verification";
 import OTP from "./Components/OTPInputPage/OTP";
 
 
 
-
 function App() {
+  
   return (
     <div className="App">
       <Router>
@@ -17,8 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<LogIn/>} />
             <Route path="/Login" element={<LogIn/>} />
-            <Route path="/SignUp" element={<SignUp/>} />
-            <Route path="/Verification" element={<Verification /> } />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/Verification" element={<OTP /> } />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           </Routes>
         </div>

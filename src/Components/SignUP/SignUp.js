@@ -3,33 +3,49 @@ import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
 import { getUserDetails, setDetails } from '../APIServices/userDetail';
 import React, {useState, useEffect} from 'react';
-
 import Verification from "../Verification/Verification";
 
 
 
 function SignUp(){
-
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('');
-    const [users, setUsers] = useState([])
+    const [usersDetail, setUsersDetail] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+    }
+        
+    )
+    
+    const [alert, setAlert] = useState(false);
 
     useEffect(() => {
         let mounted = true;
         getUserDetails()
-            .then(details => {
+            .then(userListDetails => {
                 if(mounted){
-                    setUsers(details)
+                    setUsersDetail(userListDetails)
                 }
             })
         return () => mounted = false;
     },[]);
 
+    useEffect(() => {
+        if(alert) {
+            setTimeout(() => {
+                setAlert(false);
+            
+            }, 3000)
+        }
+    }, [alert])
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        setDetails(firstName, lastName, email, password)
+        setDetails(usersDetail)
+        .then(() => {
+            setDetails('');
+            setAlert(true);
+        })
     };
 
 
@@ -47,10 +63,12 @@ function SignUp(){
                     <h3 className='welcome'>Welcome!</h3>
                     <p className='signup-info'>Sign up by entering the information below</p>
                 </div>
+                {alert && <Verification />}
                 <form onSubmit={handleSubmit} className="sign-up-form">
                     <label>
                         <input 
-                            value={firstName} onChange={event => setFirstName(event.target.value)}
+                            value={usersDetail.firstName} 
+                            onChange={event => setUsersDetail(event.target.value)}
                             type="text"
                             placeholder="First Name"
                             required
@@ -59,7 +77,8 @@ function SignUp(){
 
                     <label>
                         <input 
-                            value={lastName} onChange={event => setLastName(event.target.value)}
+                            value={usersDetail.lastName} 
+                            onChange={event => setUsersDetail(event.target.value)}
                             type="text"
                             placeholder="Last Name"
                             required
@@ -67,16 +86,18 @@ function SignUp(){
                     </label>
                     
                     <label>
-                        <input className=""
-                            value={email} onChange={event => setEmail(event.target.value)}
-                            placeholder="Email"
+                        <input 
+                            type="email"
+                            value={usersDetail.email} 
+                            onChange={event => setUsersDetail(event.target.value)}
+                            placeholder="email"
                             required
                         />
                     </label>
 
                     <label>
                         <input 
-                            value={password} onChange={event => setPassword(event.target.value)}
+                            value={usersDetail.password} onChange={event => setUsersDetail(event.target.value)}
                             type="password"
                             placeholder="Password"
                             required
@@ -100,10 +121,14 @@ function SignUp(){
                     onClick={() => setShow(true)}
                     style={{textDecoration: "none"}}
                     >
-                        <Link className="login-option"  style={{textDecoration: "none"}}>
-                            {""}
+                        <Link to="/OTP">
+                                {""}
+                            {/* <span className="sign_span">Sign Up</span> */}
                         </Link>
-                    <a href="/OTP" style={{textDecoration: "none"}}>
+                        {/* <Link className="login-option"  style={{textDecoration: "none"}}>
+                            {""}
+                        </Link> */}
+                    <a href={"/OTP"} style={{textDecoration: "none"}}>
                         <span className="signbtn">Sign Up</span> 
                    </a>
                    <Verification onClose={() => setShow(false)} show={show} />

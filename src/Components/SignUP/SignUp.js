@@ -1,12 +1,32 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
-import React, { useState} from "react";
+import { getOTP } from '../APIServices/otp';
+import React, {useState, useEffect} from 'react';
+
 import Verification from "../Verification/Verification";
 
 
 
 function SignUp(){
+
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState([]);
+
+    useEffect(() => {
+        let mounted = true;
+        getOTP()
+            .then(elements => {
+                if(mounted){
+                    setPassword(elements)
+                }
+            })
+        return () => mounted = false;
+    },[]);
+
+
     
     const [show, setShow] = useState(false);
    
@@ -24,7 +44,7 @@ function SignUp(){
                 <form className="sign-up-form">
                     <label>
                         <input 
-                            className=""
+                            value={firstName} onChange={event => setFirstName(event.target.value)}
                             type="text"
                             placeholder="First Name"
                             required
@@ -33,7 +53,7 @@ function SignUp(){
 
                     <label>
                         <input 
-                            className=""
+                            value={lastName} onChange={event => setLastName(event.target.value)}
                             type="text"
                             placeholder="Last Name"
                             required
@@ -42,14 +62,15 @@ function SignUp(){
                     
                     <label>
                         <input className=""
-                            type="text"
+                            value={email} onChange={event => setEmail(event.target.value)}
                             placeholder="Email"
                             required
                         />
                     </label>
 
                     <label>
-                        <input className=""
+                        <input 
+                            value={password} onChange={event => setPassword(event.target.value)}
                             type="password"
                             placeholder="Password"
                             required

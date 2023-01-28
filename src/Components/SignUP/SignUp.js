@@ -17,42 +17,18 @@ function SignUp(){
     }
     )
 
-        // POST request using fetch()
-    fetch("http://localhost:8080/api/v1/registration/register", {
-        
-    // Adding method type
-    method: "POST",
-    
-    // Adding body or contents to send
-    body: JSON.stringify({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: ""
-    }),
-    
-    // Adding headers to the request
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }
-    })
 
-    // Converting to JSON
-    .then(response => response.json())
 
-    // Displaying results to console
-    .then(json => console.log(json));
-
-    // const url = "http://localhost:8080/api/v1/registration/register"
-    // const postData = (e) => {
-    //     e.preventDefault();
-    //     axios.post(url, {
-    //         usersDetail
-    //     })
-    //     .then((res) => console.log(res))
-    //     .then((res) => console.log(res));
-    //     setUsersDetail('');
-    // };
+    const url = "http://localhost:8080/api/v1/registration/register"
+    const postData = (e) => {
+        e.preventDefault();
+        axios.post(url, {
+            usersDetail
+        })
+        .then((res) => console.log(res))
+        .then((res) => console.log(res));
+        setUsersDetail('');
+    };
 
 
     
@@ -103,7 +79,10 @@ function SignUp(){
                     <p className='signup-info'>Sign up by entering the information below</p>
                 </div>
                 {alert && <Verification />}
-                <form onSubmit={handleSubmit} className="sign-up-form">
+                <form 
+                    action="http://localhost:8080/api/v1/registration/register"
+                    method="post"
+                    className="sign-up-form">
                     <label>
                         <input 
                             value={usersDetail.firstName} 
@@ -158,7 +137,7 @@ function SignUp(){
                     className="signup-btn"
                     type="submit"
                     onClick={postData}
-                    // onClick={() => setShow(true)}
+                    onClick={() => setShow(true)}
                     style={{textDecoration: "none"}}
                     >
                         <Link to="/OTP">

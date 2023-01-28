@@ -24,7 +24,7 @@ function SignUp(){
                 <form className="sign-up-form">
                     <label>
                         <input 
-                            className="input_box"
+                            className=""
                             type="text"
                             placeholder="First Name"
                             required
@@ -33,7 +33,7 @@ function SignUp(){
 
                     <label>
                         <input 
-                            className="input_box"
+                            className=""
                             type="text"
                             placeholder="Last Name"
                             required
@@ -41,7 +41,7 @@ function SignUp(){
                     </label>
                     
                     <label>
-                        <input className="input_box"
+                        <input className=""
                             type="text"
                             placeholder="Email"
                             required
@@ -49,8 +49,8 @@ function SignUp(){
                     </label>
 
                     <label>
-                        <input className="input_box"
-                            type="text"
+                        <input className=""
+                            type="password"
                             placeholder="Password"
                             required
                         />
@@ -69,14 +69,14 @@ function SignUp(){
                 </div>
                 <button 
                     className="signup-btn"
-                    
+                    type="submit"
                     onClick={() => setShow(true)}
                     style={{textDecoration: "none"}}
                     >
-                        <Link className="login-option" style={{textDecoration: "none"}}>
+                        <Link className="login-option"  style={{textDecoration: "none"}}>
                             {""}
                         </Link>
-                    <a href="#" style={{textDecoration: "none"}}>
+                    <a href="/OTP" style={{textDecoration: "none"}}>
                         <span className="signbtn">Sign Up</span> 
                    </a>
                    <Verification onClose={() => setShow(false)} show={show} />

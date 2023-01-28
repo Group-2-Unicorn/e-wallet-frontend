@@ -3,13 +3,13 @@ export function getUserDetails(){
     .then(data => data.json)
 }
 
-export function setDetails(setDetails){
+export function setDetails(userDetails){
     return fetch('http://localhost:3000/userDetail', {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ setDetails })
+        body: JSON.stringify({ userDetails })
     })
     .then(data => data.json())
 }

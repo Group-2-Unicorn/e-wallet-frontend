@@ -4,6 +4,7 @@ import image from "../Assets/img.jpeg";
 import { getUserDetails, setDetails } from '../APIServices/userDetail';
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
+import axios from "axios";
 
 
 
@@ -14,21 +15,34 @@ function SignUp(){
         email: "",
         password: ""
     }
-        
     )
+
+    const url = "http://localhost:8080/api/v1/registration/register"
+    const postData = (e) => {
+        e.preventDefault();
+        axios.post(url, {
+            usersDetail
+        })
+        .then((res) => console.log(res))
+        .then((res) => console.log(res));
+        
+        setUsersDetail('');
+    };
+
+
     
     const [alert, setAlert] = useState(false);
 
-    useEffect(() => {
-        let mounted = true;
-        getUserDetails()
-            .then(userListDetails => {
-                if(mounted){
-                    setUsersDetail(userListDetails)
-                }
-            })
-        return () => mounted = false;
-    },[]);
+    // useEffect(() => {
+    //     let mounted = true;
+    //     getUserDetails()
+    //         .then(userListDetails => {
+    //             if(mounted){
+    //                 setUsersDetail(userListDetails)
+    //             }
+    //         })
+    //     return () => mounted = false;
+    // },[]);
 
     useEffect(() => {
         if(alert) {
@@ -118,7 +132,8 @@ function SignUp(){
                 <button 
                     className="signup-btn"
                     type="submit"
-                    onClick={() => setShow(true)}
+                    onClick={postData}
+                    // onClick={() => setShow(true)}
                     style={{textDecoration: "none"}}
                     >
                         <Link to="/OTP">

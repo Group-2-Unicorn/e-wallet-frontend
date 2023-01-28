@@ -1,7 +1,7 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
-import { getOTP } from '../APIServices/otp';
+import { getUserDetails } from '../APIServices/userDetail';
 import React, {useState, useEffect} from 'react';
 
 import Verification from "../Verification/Verification";
@@ -17,7 +17,7 @@ function SignUp(){
 
     useEffect(() => {
         let mounted = true;
-        getOTP()
+        getUserDetails()
             .then(elements => {
                 if(mounted){
                     setPassword(elements)

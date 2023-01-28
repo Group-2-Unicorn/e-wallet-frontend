@@ -68,7 +68,7 @@ function SignUp(){
                     <label>
                         <input 
                             value={usersDetail.firstName} 
-                            onChange={event => setUsersDetail(event.target.value)}
+                            onChange={(event) => setUsersDetail(event.target.value)}
                             type="text"
                             placeholder="First Name"
                             required
@@ -78,7 +78,7 @@ function SignUp(){
                     <label>
                         <input 
                             value={usersDetail.lastName} 
-                            onChange={event => setUsersDetail(event.target.value)}
+                            onChange={(event) => setUsersDetail(event.target.value)}
                             type="text"
                             placeholder="Last Name"
                             required
@@ -89,7 +89,7 @@ function SignUp(){
                         <input 
                             type="email"
                             value={usersDetail.email} 
-                            onChange={event => setUsersDetail(event.target.value)}
+                            onChange={(event) => setUsersDetail(event.target.value)}
                             placeholder="email"
                             required
                         />
@@ -97,7 +97,7 @@ function SignUp(){
 
                     <label>
                         <input 
-                            value={usersDetail.password} onChange={event => setUsersDetail(event.target.value)}
+                            value={usersDetail.password} onChange={(event) => setUsersDetail(event.target.value)}
                             type="password"
                             placeholder="Password"
                             required

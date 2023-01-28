@@ -1,7 +1,7 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
-import { getUserDetails } from '../APIServices/userDetail';
+import { getUserDetails, setDetails } from '../APIServices/userDetail';
 import React, {useState, useEffect} from 'react';
 
 import Verification from "../Verification/Verification";
@@ -13,18 +13,24 @@ function SignUp(){
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState([]);
+    const [password, setPassword] = useState('');
+    const [users, setUsers] = useState([])
 
     useEffect(() => {
         let mounted = true;
         getUserDetails()
-            .then(elements => {
+            .then(details => {
                 if(mounted){
-                    setPassword(elements)
+                    setUsers(details)
                 }
             })
         return () => mounted = false;
     },[]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setDetails(firstName, lastName, email, password)
+    };
 
 
 
@@ -41,7 +47,7 @@ function SignUp(){
                     <h3 className='welcome'>Welcome!</h3>
                     <p className='signup-info'>Sign up by entering the information below</p>
                 </div>
-                <form className="sign-up-form">
+                <form onSubmit={handleSubmit} className="sign-up-form">
                     <label>
                         <input 
                             value={firstName} onChange={event => setFirstName(event.target.value)}

@@ -17,17 +17,42 @@ function SignUp(){
     }
     )
 
-    const url = "http://localhost:8080/api/v1/registration/register"
-    const postData = (e) => {
-        e.preventDefault();
-        axios.post(url, {
-            usersDetail
-        })
-        .then((res) => console.log(res))
-        .then((res) => console.log(res));
+        // POST request using fetch()
+    fetch("http://localhost:8080/api/v1/registration/register", {
         
-        setUsersDetail('');
-    };
+    // Adding method type
+    method: "POST",
+    
+    // Adding body or contents to send
+    body: JSON.stringify({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+    }),
+    
+    // Adding headers to the request
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+    })
+
+    // Converting to JSON
+    .then(response => response.json())
+
+    // Displaying results to console
+    .then(json => console.log(json));
+
+    // const url = "http://localhost:8080/api/v1/registration/register"
+    // const postData = (e) => {
+    //     e.preventDefault();
+    //     axios.post(url, {
+    //         usersDetail
+    //     })
+    //     .then((res) => console.log(res))
+    //     .then((res) => console.log(res));
+    //     setUsersDetail('');
+    // };
 
 
     
@@ -82,7 +107,7 @@ function SignUp(){
                     <label>
                         <input 
                             value={usersDetail.firstName} 
-                            onChange={(event) => setUsersDetail(event.target.value)}
+                            onChange={event => setUsersDetail(event.target.value)}
                             type="text"
                             placeholder="First Name"
                             required
@@ -92,7 +117,7 @@ function SignUp(){
                     <label>
                         <input 
                             value={usersDetail.lastName} 
-                            onChange={(event) => setUsersDetail(event.target.value)}
+                            onChange={event => setUsersDetail(event.target.value)}
                             type="text"
                             placeholder="Last Name"
                             required
@@ -103,7 +128,7 @@ function SignUp(){
                         <input 
                             type="email"
                             value={usersDetail.email} 
-                            onChange={(event) => setUsersDetail(event.target.value)}
+                            onChange={event => setUsersDetail(event.target.value)}
                             placeholder="email"
                             required
                         />
@@ -111,7 +136,7 @@ function SignUp(){
 
                     <label>
                         <input 
-                            value={usersDetail.password} onChange={(event) => setUsersDetail(event.target.value)}
+                            value={usersDetail.password} onChange={event => setUsersDetail(event.target.value)}
                             type="password"
                             placeholder="Password"
                             required

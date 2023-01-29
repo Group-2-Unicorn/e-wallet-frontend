@@ -1,10 +1,8 @@
 import "./SignUp.css";
 import { json, Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
-import { getUserDetails, setDetails } from '../APIServices/userDetail';
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
-import axios from "axios";
 
 
 
@@ -17,12 +15,9 @@ function SignUp(){
     }
     )
 
-
-
-
     const url = "http://localhost:8080/api/v1/registration/register"
     const postData = async () => {
-        //console.log(usersDetail)
+        console.log(usersDetail)
         const response = await fetch(url, {
             method: 'POST',
             body: JSON.stringify(usersDetail),
@@ -32,12 +27,6 @@ function SignUp(){
         })
         const data = await response.json()
         console.log(data)
-        // axios.post(url, {
-        //     usersDetail
-        // })
-        // .then((res) => SignUp(res))
-        // .then((res) => SignUp(res));
-        // setUsersDetail('');
     };
 
 
@@ -53,18 +42,9 @@ function SignUp(){
         }
     }, [alert])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setDetails(usersDetail)
-        .then(() => {
-            setDetails('');
-            setAlert(true);
-        })
-    };
-
-
 
     const [show, setShow] = useState(false);
+
    const handleChange = (event) => {
     const {name, value} = event.target
     setUsersDetail(() => {
@@ -85,7 +65,7 @@ function SignUp(){
                     <h3 className='welcome'>Welcome!</h3>
                     <p className='signup-info'>Sign up by entering the information below</p>
                 </div>
-                {alert && <Verification />}
+                {alert && <Verification onClose={() => setShow(false)} show={show}  />}
                 <form 
                     method="post"
                     className="sign-up-form">
@@ -148,20 +128,17 @@ function SignUp(){
                     className="signup-btn"
                     type="submit"
                     onClick={postData}
-                    // onClick={() => setShow(true)}
+                   
                     style={{textDecoration: "none"}}
                     >
                         <Link to="/OTP">
                                 {""}
                             
                         </Link>
-                        {/* <Link className="login-option"  style={{textDecoration: "none"}}>
-                            {""}
-                        </Link> */}
-                    <a href={"/OTP"} style={{textDecoration: "none"}}>
+                    <a href="/OTP" style={{textDecoration: "none"}}>
                         <span className="signbtn">Sign Up</span> 
                    </a>
-                   <Verification onClose={() => setShow(false)} show={show} />
+                   {/* <Verification onClose={() => setShow(false)} show={show} /> */}
                 </button>
                    
             </div>

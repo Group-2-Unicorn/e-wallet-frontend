@@ -53,7 +53,7 @@ function SignUp(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+    }
 //    const handleChange = (event) => {
 //     const {name, value} = event.target
 //     setFirstName, setLastName, setEmail, setPassWord (() => {
@@ -119,7 +119,7 @@ function SignUp(){
 
                     <label>
                         <input 
-                            value={password=""}
+                            value={password}
                             onChange={(e) => setPassWord(e.target.value)}
                             // value={usersDetail.password} 
                             // onChange={handleChange}

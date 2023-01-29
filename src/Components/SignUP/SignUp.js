@@ -31,14 +31,6 @@ function SignUp(){
 
     const [show, setShow] = useState(false);
 
-    // const handleChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setUsersDetail(prevState => {
-    //         return{
-    //         ...prevState,
-    //         [name]: value
-    //         };
-    // })}
 
    const handleChange = (event) => {
     const {name, value} = event.target
@@ -67,6 +59,7 @@ function SignUp(){
             emailAddress: usersDetail.emailAddress
         }
        })
+
    };
     return(
         <div className="Signup-container">
@@ -79,7 +72,7 @@ function SignUp(){
                     <h3 className='welcome'>Welcome!</h3>
                     <p className='signup-info'>Sign up by entering the information below</p>
                 </div>
-                {alert && <Verification onClose={() => setShow(false)} show={show}  />}
+                {/* {alert && <Verification onClose={() => setShow(false)} show={show}  />} */}
                 <form 
                     method="post"
                     className="sign-up-form">
@@ -132,7 +125,7 @@ function SignUp(){
                 <div className="optionsContainer">
                     <p className='signup-option'>Already have an account?</p>
                         <p>
-                            <Link className="login-option" to="/LogIn" style={{textDecoration: "none"}}>
+                            <Link className="login-option" style={{textDecoration: "none"}}>
                                 {""}
                                 LogIn
                             </Link>
@@ -142,14 +135,12 @@ function SignUp(){
                     className="signup-btn"
                     type="submit"
                     onClick={postData}
-                   
+                                       
                     style={{textDecoration: "none"}}
                     >
+                    <span className="signbtn">Sign Up</span> 
                 
-                    <a href="" style={{textDecoration: "none"}}>
-                        <span className="signbtn">Sign Up</span> 
-                   </a>
-                   {/* <Verification onClose={() => setShow(false)} show={show} /> */}
+                   <Verification onClick={() => setShow(false)} show={show} />
                 </button>
                    
             </div>

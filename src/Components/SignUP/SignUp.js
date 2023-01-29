@@ -41,6 +41,7 @@ function SignUp(){
         }
     })
    }
+   
    const url = "http://localhost:8080/api/v1/registration/register"
    const postData = async (event) => {
     event.preventDefault()
@@ -125,13 +126,14 @@ function SignUp(){
                 <div className="optionsContainer">
                     <p className='signup-option'>Already have an account?</p>
                         <p>
-                            <Link className="login-option" style={{textDecoration: "none"}}>
+                            <Link to="/Login" className="login-option" style={{textDecoration: "none"}}>
                                 {""}
                                 LogIn
                             </Link>
                         </p>
                 </div>
                 <button 
+                    to="/OTP"
                     className="signup-btn"
                     type="submit"
                     onClick={postData}
@@ -139,9 +141,13 @@ function SignUp(){
                     style={{textDecoration: "none"}}
                     >
                     <span className="signbtn">Sign Up</span> 
-                
-                   <Verification onClick={() => setShow(false)} show={show} />
+                    <Link to="/OTP" className="login-option" style={{textDecoration: "none"}}>
+                                {""}
+                                
+                            </Link>
+                   
                 </button>
+                <Verification onClick={() => setShow(false)} show={show} />
                    
             </div>
         </div>

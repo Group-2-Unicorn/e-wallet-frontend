@@ -26,7 +26,7 @@ function SignUp(){
         console.log(firstName, lastName, email, password )
         const response = await fetch(url, {
             method: 'POST',
-            body: JSON.stringify(firstName, lastName, email, password ),
+            body: JSON.stringify('firstName', 'lastName', 'email', 'password' ),
             headers: {
                 "Content-type": "application/json"
             }

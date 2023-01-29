@@ -45,15 +45,23 @@ function SignUp(){
 
     const [show, setShow] = useState(false);
 
-   const handleChange = (event) => {
-    const {name, value} = event.target
-    setUsersDetail(() => {
-        return {
-            ...usersDetail,
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setUsersDetail(prevState => ({
+            ...prevState,
             [name]: value
-        }
-    })
-   }
+        }));
+    };
+
+//    const handleChange = (event) => {
+//     const {name, value} = event.target
+//     setUsersDetail(() => {
+//         return {
+//             ...usersDetail,
+//             [name]: value
+//         }
+//     })
+//    }
     return(
         <div className="Signup-container">
             <div className="left-side"> 

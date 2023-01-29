@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
 import './otp.css'
+
 import React, {useState, useEffect} from 'react';
 import image from "../Assets/img.jpeg";
 
 
 const OTP = () => {
-        const [otp, setOtp] = useState({
-            emailAddress: "",
-            oneTimePassword: "",
-        } 
-        );
+        const [otp, setOtp] = useState("");
 
     const url = "http://localhost:8080/api/v1/registration/verify"
 
@@ -28,13 +25,8 @@ const OTP = () => {
     }
 
     const handleOtp = (event) => {
-        const {name, value} = event.target
-        setOtp(() => {
-            return {
-                ...otp, 
-                [name]: value
-            }
-        })
+        const {value} = event.target
+        setOtp(value)
     }
 
     return (
@@ -54,7 +46,7 @@ const OTP = () => {
                                 <input 
                                 onChange={handleOtp}
                                 name="oneTimePassword"
-                                value={otp.oneTimePassword}
+                                value={otp}
                                 onClick={verify}
                                 className="input-btn"
                                 type="password"

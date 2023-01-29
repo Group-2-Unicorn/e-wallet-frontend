@@ -7,20 +7,26 @@ import Verification from "../Verification/Verification";
 
 
 function SignUp(){
-    const [usersDetail, setUsersDetail] = useState({
-        firstName: "",
-        lastName: "",
-        emailAddress: "",
-        password: ""
-    }
-    )
+
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("");
+    const [password, setPassWord] = useState("")
+    
+    // const [usersDetail, setUsersDetail] = useState({
+    //     firstName: "",
+    //     lastName: "",
+    //     emailAddress: "",
+    //     password: ""
+    // }
+    // )
 
     const url = "http://localhost:8080/api/v1/registration/register"
     const postData = async () => {
-        console.log(usersDetail)
+        console.log(firstName, lastName, email, password )
         const response = await fetch(url, {
             method: 'POST',
-            body: JSON.stringify(usersDetail),
+            body: JSON.stringify(firstName, lastName, email, password ),
             headers: {
                 "Content-type": "application/json"
             }
@@ -45,15 +51,18 @@ function SignUp(){
 
     const [show, setShow] = useState(false);
 
-   const handleChange = (event) => {
-    const {name, value} = event.target
-    setUsersDetail(() => {
-        return {
-            ...usersDetail,
-            [name]: value
-        }
-    })
-   }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+//    const handleChange = (event) => {
+//     const {name, value} = event.target
+//     setFirstName, setLastName, setEmail, setPassWord (() => {
+//         return {
+//             ...firstName, lastName, email, password ,
+//             [name]: value
+//         }
+//     })
+//    }
     return(
         <div className="Signup-container">
             <div className="left-side"> 
@@ -67,12 +76,14 @@ function SignUp(){
                 </div>
                 {alert && <Verification onClose={() => setShow(false)} show={show}  />}
                 <form 
-                    method="post"
+                    onSubmit={handleSubmit}
                     className="sign-up-form">
                     <label>
                         <input 
-                            value={usersDetail.firstName} 
-                            onChange={handleChange}
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            // value={usersDetail.firstName} 
+                            // onChange={handleChange}
                             name="firstName"
                             type="text"
                             placeholder="First Name"
@@ -82,8 +93,10 @@ function SignUp(){
 
                     <label>
                         <input 
-                            value={usersDetail.lastName} 
-                            onChange={handleChange}
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            // value={usersDetail.lastName} 
+                            // onChange={handleChange}
                             type="text"
                             name="lastName"
                             placeholder="Last Name"
@@ -94,8 +107,10 @@ function SignUp(){
                     <label>
                         <input 
                             type="email"
-                            value={usersDetail.emailAddress} 
-                            onChange={handleChange}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            // value={usersDetail.emailAddress} 
+                            // onChange={handleChange}
                             name="emailAddress"
                             placeholder="email"
                             required
@@ -104,8 +119,10 @@ function SignUp(){
 
                     <label>
                         <input 
-                            value={usersDetail.password} 
-                            onChange={handleChange}
+                            value={password=""}
+                            onChange={(e) => setPassWord(e.target.value)}
+                            // value={usersDetail.password} 
+                            // onChange={handleChange}
                             type="password"
                             name="password"
                             placeholder="Password"

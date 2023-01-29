@@ -122,8 +122,6 @@ form {
     font-weight: 500;
     font-size: 21.1556px;
     color: #55229E;
-    color: #55229E;
-    color: #55229E;
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -161,4 +159,15 @@ form {
     align-items: center;
     text-align: center;
     justify-content: center;
+}
+
+@media (min-width: 600px) and (max-width:1200px){
+   img.images { 
+    position:none;
+    display: none; 
+    margin: 0;  
+    }
+    div.Signup-container{
+        margin: 0;
+    } 
 }

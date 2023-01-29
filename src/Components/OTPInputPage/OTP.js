@@ -58,7 +58,15 @@ const OTP = () => {
                             onChange={handleOtp}
                         />
                         </form>
-                        <button onClick = {postData} className="otp-btn">Continue</button>
+                        <button 
+                            to="/LogIn" 
+                            onClick={postData} 
+                            className="otp-btn">
+                            <Link to="/LogIn">
+                            {""}
+                            Continue
+                        </Link>
+                    </button>
                     </div>
                 </div>
             </div>

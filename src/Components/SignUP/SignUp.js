@@ -19,8 +19,9 @@ function SignUp(){
 
 
 
-    const url = "http://localhost:8080/api/v1/registration/register"
-    const postData = (e) => {
+    const url = "http://localhost:8080/api/v1/registration"
+
+    const postData = async (e) => {
         e.preventDefault();
         axios.post(url, {
             usersDetail
@@ -33,17 +34,6 @@ function SignUp(){
 
     
     const [alert, setAlert] = useState(false);
-
-    // useEffect(() => {
-    //     let mounted = true;
-    //     getUserDetails()
-    //         .then(userListDetails => {
-    //             if(mounted){
-    //                 setUsersDetail(userListDetails)
-    //             }
-    //         })
-    //     return () => mounted = false;
-    // },[]);
 
     useEffect(() => {
         if(alert) {
@@ -80,7 +70,6 @@ function SignUp(){
                 </div>
                 {alert && <Verification />}
                 <form 
-                    action="http://localhost:8080/api/v1/registration/register"
                     method="post"
                     className="sign-up-form">
                     <label>
@@ -137,17 +126,14 @@ function SignUp(){
                     className="signup-btn"
                     type="submit"
                     onClick={postData}
-                    onClick={() => setShow(true)}
+                    // onClick={() => setShow(true)}
                     style={{textDecoration: "none"}}
                     >
                         <Link to="/OTP">
                                 {""}
-                            {/* <span className="sign_span">Sign Up</span> */}
+                            
                         </Link>
-                        {/* <Link className="login-option"  style={{textDecoration: "none"}}>
-                            {""}
-                        </Link> */}
-                    <a href={"/OTP"} style={{textDecoration: "none"}}>
+                    <a href="/OTP" style={{textDecoration: "none"}}>
                         <span className="signbtn">Sign Up</span> 
                    </a>
                    <Verification onClose={() => setShow(false)} show={show} />

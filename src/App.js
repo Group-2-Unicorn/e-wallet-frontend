@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div>
           <Routes>
             <Route path="/" element={<LogIn/>} />
             <Route path="/Login" element={<LogIn/>} />
@@ -22,7 +21,6 @@ function App() {
             <Route path="/OTP" element={<OTP /> } />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           </Routes>
-        </div>
       </Router>
     </div>
   );

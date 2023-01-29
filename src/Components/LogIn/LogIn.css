@@ -21,8 +21,8 @@
 .input_box {
   border: 1px solid gray;
   border-radius: 8px;
-  background-color: white;
-  color: white;
+  background-color: #ffffff;
+  color: #55229e;
 }
 
 .login h2 {

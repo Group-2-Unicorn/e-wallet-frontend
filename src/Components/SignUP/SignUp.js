@@ -1,5 +1,6 @@
 import "./SignUp.css";
-import { json, Link } from "react-router-dom";
+import { json, Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
@@ -15,24 +16,9 @@ function SignUp(){
     }
     )
 
-    const url = "http://localhost:8080/api/v1/registration/register"
-    const postData = async () => {
-        console.log(usersDetail)
-        const response = await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(usersDetail),
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
-        const data = await response.json()
-        console.log(data)
-    };
-
-
     
     const [alert, setAlert] = useState(false);
-
+    const navigate = useNavigate()
     useEffect(() => {
         if(alert) {
             setTimeout(() => {
@@ -45,23 +31,43 @@ function SignUp(){
 
     const [show, setShow] = useState(false);
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setUsersDetail(prevState => ({
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setUsersDetail(prevState => {
+    //         return{
+    //         ...prevState,
+    //         [name]: value
+    //         };
+    // })}
+
+   const handleChange = (event) => {
+    const {name, value} = event.target
+    setUsersDetail((prevState) => {
+        return {
             ...prevState,
             [name]: value
-        }));
-    };
-
-//    const handleChange = (event) => {
-//     const {name, value} = event.target
-//     setUsersDetail(() => {
-//         return {
-//             ...usersDetail,
-//             [name]: value
-//         }
-//     })
-//    }
+        }
+    })
+   }
+   const url = "http://localhost:8080/api/v1/registration/register"
+   const postData = async (event) => {
+    event.preventDefault()
+       console.log(usersDetail)
+       const response = await fetch(url, {
+           method: 'POST',
+           body: JSON.stringify(usersDetail),
+           headers: {
+               "Content-type": "application/json"
+           }
+       })
+       const data = await response.json()
+       console.log(data)
+       navigate("/OTP", {
+        state:{
+            emailAddress: usersDetail.emailAddress
+        }
+       })
+   };
     return(
         <div className="Signup-container">
             <div className="left-side"> 
@@ -139,11 +145,8 @@ function SignUp(){
                    
                     style={{textDecoration: "none"}}
                     >
-                        <Link to="/OTP">
-                                {""}
-                            
-                        </Link>
-                    <a href="/OTP" style={{textDecoration: "none"}}>
+                
+                    <a href="" style={{textDecoration: "none"}}>
                         <span className="signbtn">Sign Up</span> 
                    </a>
                    {/* <Verification onClose={() => setShow(false)} show={show} /> */}

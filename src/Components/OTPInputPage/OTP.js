@@ -6,7 +6,10 @@ import image from "../Assets/img.jpeg";
 
 
 const OTP = () => {
-        const [otp, setOtp] = useState("");
+        const [otp, setOtp] = useState({
+            oneTimePassword: "",
+            emailAddress: ""
+        });
 
     const url = "http://localhost:8080/api/v1/registration/verify"
 
@@ -48,7 +51,7 @@ const OTP = () => {
                             onClick={verify}
                             placeholder="-"
                             required
-                            value={otp}
+                            value={otp.oneTimePassword}
                             onChange={(e) => setOtp(e.target.value)}
                         />
 

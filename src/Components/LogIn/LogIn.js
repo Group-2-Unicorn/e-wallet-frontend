@@ -27,7 +27,7 @@ function LogIn() {
 
    const navigate = useNavigate()
 
-  const baseUrl = "https://localhost:3000/api/v1/users/login";
+  const baseUrl = "https://localhost:8080/api/v1/users/login";
 
   const validateUser = async (event) => {
     event.preventDefault()
@@ -78,7 +78,8 @@ function LogIn() {
             <input
               placeholder="Email"
               className="input_box"
-              type="text"
+              name="emailAddress"
+              type="email"
               onChange={handleChange}
               value={userLoginDetail.emailAddress} 
               
@@ -91,7 +92,8 @@ function LogIn() {
             <input
               placeholder="Password"
               className="input_box"
-              type="text"
+              type="password"
+              name="password"
               value={userLoginDetail.password} 
               onChange={handleChange}
               required
@@ -100,7 +102,8 @@ function LogIn() {
           </div>
           <div className="remember">
             <div className="checker">
-              <input type="checkbox" value={validateUser.rememberMe}/>
+              <input type="checkbox" />
+              {/* value={validateUser.rememberMe} */}
               <span className="rem-me">Remember Me</span>
             </div>
               <p>                
@@ -115,8 +118,12 @@ function LogIn() {
                 </p>
             </div>
           </div>
-          <button className="login_submit" onClick={validateUser={}}>
-            Log In
+          <button className="login_submit" onClick={validateUser}>
+          <Link to="/Dashboard">
+                {""}
+                <span className="sign_span">Log In</span>
+              </Link>
+            
           </button>
           <div className="sign_link">
             <p className="dont_have">Don't have an Account?</p>

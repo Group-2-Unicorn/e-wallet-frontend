@@ -17,9 +17,10 @@ function App() {
       <Router>
           <Routes>
             <Route path="/" element={<LogIn/>} />
-            <Route path="/Login" element={<LogIn/>} />
+            <Route path="/LogIn" element={<LogIn/>} />
             <Route path="/SignUp" element={<SignUp />} />
-            <Route path="/Dashboard" element={<OTP /> } />
+            <Route path="/OTP" element={<OTP /> } />
+            <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           </Routes>
       </Router>

@@ -1,24 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import './otp.css'
-
 import React, {useState, useEffect} from 'react';
 import image from "../Assets/img.jpeg";
 
 
 const OTP = () => {
-        const [otp, setOtp] = useState({
-            oneTimePassword: "",
-            emailAddress: ""
-        });
-
+    const [otp, setOtp] = useState("");
+    const location = useLocation()
+    const {emailAddress} = location.state
     const url = "http://localhost:8080/api/v1/registration/verify"
 
-    const verify = async () => {
-        console.log(otp)
-
+    const verify = async (par) => {
         const response = await fetch( url, {
             method: 'POST',
-            body: JSON.stringify(otp),
+            body: JSON.stringify(par),
             headers: {
                 "Content-type": "application/json"
             }
@@ -27,6 +22,14 @@ const OTP = () => {
         console.log(data)
     }
 
+    const postData = () => {
+        const otpObj = {
+            emailAddress: emailAddress,
+            oneTimePassword: otp
+        }
+        console.log(otpObj)
+        verify(otpObj)
+    }
     const handleOtp = (event) => {
         const {value} = event.target
         setOtp(value)
@@ -45,79 +48,17 @@ const OTP = () => {
                     </div>
                     <div className="otp-form-div">
 
-                    <form method="post" onSubmit={handleOtp}>
+                    <form>
                         <input
                             type="text"
                             onClick={verify}
                             placeholder="-"
                             required
-                            value={otp.oneTimePassword}
-                            onChange={(e) => setOtp(e.target.value)}
+                            value={otp}
+                            onChange={handleOtp}
                         />
-
-                            {/* <label>
-                                <input 
-                                onChange={handleOtp}
-                                name="oneTimePassword"
-                                value={otp}
-                                onClick={verify}
-                                className="input-btn"
-                                type="password"
-                                placeholder="-"
-                                required
-                                />
-                            </label>
-
-                            <label>
-                                <input 
-                                value={otp.oneTimePassword}
-                                onChange={handleOtp}
-                                name="oneTimePassword"
-                                onClick={verify}
-                                className="input-btn"
-                                type="password"
-                                placeholder="-"
-                                required
-                                />
-                            </label>
-
-                            <label>
-                                <input 
-                                value={otp.oneTimePassword}
-                                onChange={handleOtp}
-                                name="oneTimePassword"
-                                onClick={verify}
-                                className="input-btn"
-                                type="password"
-                                placeholder="-"
-                                required
-                                />
-                            </label>
-
-                            <label>
-                                <input 
-                                value={otp.oneTimePassword}
-                                onChange={handleOtp}
-                                name="oneTimePassword"
-                                onClick={verify}
-                                className="input-btn"
-                                type="password"
-                                placeholder="-"
-                                required
-                                />
-                            </label> */}
                         </form>
-                        <button 
-                            className="otp-btn"
-                            to="/Verification" 
-                            // onClick={() => setShow(true)}
-                        >
-                        <Link >
-                            {""}
-                        </Link>
-                        <a href="/Verification" style={{textDecoration: "none"}}>
-                        <span className="otpbtn">Continue</span> 
-                   </a></button>
+                        <button onClick = {postData} className="otp-btn">Continue</button>
                     </div>
                 </div>
             </div>

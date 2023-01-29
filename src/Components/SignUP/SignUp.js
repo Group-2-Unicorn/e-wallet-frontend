@@ -1,5 +1,5 @@
 import "./SignUp.css";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import image from "../Assets/img.jpeg";
 import { getUserDetails, setDetails } from '../APIServices/userDetail';
 import React, {useState, useEffect} from 'react';
@@ -12,23 +12,32 @@ function SignUp(){
     const [usersDetail, setUsersDetail] = useState({
         firstName: "",
         lastName: "",
-        email: "",
+        emailAddress: "",
         password: ""
     }
     )
 
 
 
-    const url = "http://localhost:8080/api/v1/registration"
 
-    const postData = async (e) => {
-        e.preventDefault();
-        axios.post(url, {
-            usersDetail
+    const url = "http://localhost:8080/api/v1/registration/register"
+    const postData = async () => {
+        //console.log(usersDetail)
+        const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(usersDetail),
+            headers: {
+                "Content-type": "application/json"
+            }
         })
-        .then((res) => console.log(res))
-        .then((res) => console.log(res));
-        setUsersDetail('');
+        const data = await response.json()
+        console.log(data)
+        // axios.post(url, {
+        //     usersDetail
+        // })
+        // .then((res) => SignUp(res))
+        // .then((res) => SignUp(res));
+        // setUsersDetail('');
     };
 
 
@@ -56,7 +65,15 @@ function SignUp(){
 
 
     const [show, setShow] = useState(false);
-   
+   const handleChange = (event) => {
+    const {name, value} = event.target
+    setUsersDetail(() => {
+        return {
+            ...usersDetail,
+            [name]: value
+        }
+    })
+   }
     return(
         <div className="Signup-container">
             <div className="left-side"> 
@@ -75,7 +92,8 @@ function SignUp(){
                     <label>
                         <input 
                             value={usersDetail.firstName} 
-                            onChange={event => setUsersDetail(event.target.value)}
+                            onChange={handleChange}
+                            name="firstName"
                             type="text"
                             placeholder="First Name"
                             required
@@ -85,8 +103,9 @@ function SignUp(){
                     <label>
                         <input 
                             value={usersDetail.lastName} 
-                            onChange={event => setUsersDetail(event.target.value)}
+                            onChange={handleChange}
                             type="text"
+                            name="lastName"
                             placeholder="Last Name"
                             required
                         />
@@ -95,8 +114,9 @@ function SignUp(){
                     <label>
                         <input 
                             type="email"
-                            value={usersDetail.email} 
-                            onChange={event => setUsersDetail(event.target.value)}
+                            value={usersDetail.emailAddress} 
+                            onChange={handleChange}
+                            name="emailAddress"
                             placeholder="email"
                             required
                         />
@@ -104,8 +124,10 @@ function SignUp(){
 
                     <label>
                         <input 
-                            value={usersDetail.password} onChange={event => setUsersDetail(event.target.value)}
+                            value={usersDetail.password} 
+                            onChange={handleChange}
                             type="password"
+                            name="password"
                             placeholder="Password"
                             required
                         />
@@ -133,7 +155,10 @@ function SignUp(){
                                 {""}
                             
                         </Link>
-                    <a href="/OTP" style={{textDecoration: "none"}}>
+                        {/* <Link className="login-option"  style={{textDecoration: "none"}}>
+                            {""}
+                        </Link> */}
+                    <a href={"/OTP"} style={{textDecoration: "none"}}>
                         <span className="signbtn">Sign Up</span> 
                    </a>
                    <Verification onClose={() => setShow(false)} show={show} />

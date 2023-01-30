@@ -22,11 +22,52 @@
     font-size: 18.1333px;
     line-height: 21px;
     text-align: center;
-
     color: #000000;
 }
 
+input[type=submit] {
+    box-sizing: border-box;
+    background: #FFFFFF;
+   
+    border-radius: 12.0889px;
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #C4C4C4;
+    border-radius: 12.088889122009277px;
+
+  }
+
+
 input[type=text] {
+    box-sizing: border-box;
+    background: #FFFFFF;
+   
+    border-radius: 12.0889px;
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #C4C4C4;
+    border-radius: 12.088889122009277px;
+
+  }
+
+
+input[type=email] {
+    box-sizing: border-box;
+    background: #FFFFFF;
+   
+    border-radius: 12.0889px;
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #C4C4C4;
+    border-radius: 12.088889122009277px;
+
+  }
+
+
+input[type=password] {
     box-sizing: border-box;
     background: #FFFFFF;
    
@@ -46,20 +87,32 @@ input[type=text] {
 }
 
 .Signup-container {
+<<<<<<< HEAD
     height: 345px;
+=======
+    height: 343px;
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
 }
 
 form {
     width: 70%;
     text-align: center;
     margin: 0 auto;
+<<<<<<< HEAD
     /* padding: 20px; */
+=======
+    padding: 20px;
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     background-color: #FFFFFF;
     border-radius: 12.088889122009277px;
 }
 
 .images{
     width: 180%;
+<<<<<<< HEAD
+=======
+    height: 99vh;
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
 }
 
 .signup-option {
@@ -75,19 +128,26 @@ form {
 
 .login-option {
     margin-left: 60px;
+<<<<<<< HEAD
         
     /* width: 117px;
     height: 29px;
     margin-right: 175px; */
 
+=======
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 21.1556px;
+<<<<<<< HEAD
 
     color: #55229E;
     /* Inside auto layout */
 
+=======
+    color: #55229E;
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -100,6 +160,10 @@ form {
 }
 
 .signbtn{
+<<<<<<< HEAD
+=======
+    color: white;
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     display: center;
     justify-content: center;
     justify-items: center;
@@ -116,7 +180,6 @@ form {
     border: 1.51111px solid #56229E; 
     border-radius: 12.0889px;
     color: #FFFFFF;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -125,5 +188,19 @@ form {
     align-items: center;
     text-align: center;
     justify-content: center;
-
 }
+
+<<<<<<< HEAD
+}
+=======
+@media (min-width: 600px) and (max-width:1200px){
+   img.images { 
+    position:none;
+    display: none; 
+    margin: 0;  
+    }
+    div.Signup-container{
+        margin: 0;
+    } 
+}
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939

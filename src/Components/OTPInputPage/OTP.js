@@ -8,7 +8,7 @@ const OTP = () => {
     const [otp, setOtp] = useState("");
     const location = useLocation()
     const {emailAddress} = location.state
-    const url = "http://localhost:8080/api/v1/registration/verify"
+    const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/verify"
 
     const verify = async (par) => {
         const response = await fetch( url, {

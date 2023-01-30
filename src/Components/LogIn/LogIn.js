@@ -33,7 +33,7 @@ function LogIn() {
    
    
 
-  const baseUrl = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/users/login";
+  const baseUrl = "https://localhost:8080/api/v1/users/login";
 
   const validateUser = async (event) => {
     event.preventDefault()

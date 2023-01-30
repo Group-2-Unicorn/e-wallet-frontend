@@ -2,15 +2,8 @@ import "./SignUp.css";
 import { json, Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "../Assets/img.jpeg";
-<<<<<<< HEAD
-import React, { useState} from "react";
-import Verification from "../VerifyPage/Verification";
-=======
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
-
-
 
 function SignUp(){
     const [usersDetail, setUsersDetail] = useState({
@@ -47,7 +40,7 @@ function SignUp(){
     })
    }
    
-   const url = "http://localhost:8080/api/v1/registration/register"
+   const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
    const postData = async (event) => {
     event.preventDefault()
        console.log(usersDetail)
@@ -83,14 +76,10 @@ function SignUp(){
                     method="post"
                     className="sign-up-form">
                     <label>
-<<<<<<< HEAD
-                        <input className="input_box"
-=======
                         <input 
                             value={usersDetail.firstName} 
                             onChange={handleChange}
                             name="firstName"
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
                             type="text"
                             placeholder="First Name"
                             required
@@ -98,13 +87,9 @@ function SignUp(){
                     </label>
 
                     <label>
-<<<<<<< HEAD
                         <input className="input_box"
-=======
-                        <input 
                             value={usersDetail.lastName} 
                             onChange={handleChange}
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
                             type="text"
                             name="lastName"
                             placeholder="Last Name"
@@ -153,25 +138,14 @@ function SignUp(){
                                        
                     style={{textDecoration: "none"}}
                     >
-<<<<<<< HEAD
                     <Link className="login-option" style={{textDecoration: "none"}}>
                         {""}
                     </Link>
                     <a href="/Verification" style={{textDecoration: "none"}}>
                    <span className="signbtn">Sign Up</span> 
-                   </a></button>
-                   <Verification onClose={() => setShow(false)} show={show} />
-=======
-                    <span className="signbtn">Sign Up</span> 
-                    <Link to="/OTP" className="login-option" style={{textDecoration: "none"}}>
-                                {""}
-                                
-                            </Link>
-                   
+                   </a>
                 </button>
-                <Verification onClick={() => setShow(false)} show={show} />
-                   
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
+                   <Verification onClose={() => setShow(false)} show={show} />
             </div>
         </div>
     )

@@ -87,32 +87,21 @@ input[type=password] {
 }
 
 .Signup-container {
-<<<<<<< HEAD
-    height: 345px;
-=======
     height: 343px;
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
 }
 
 form {
     width: 70%;
     text-align: center;
     margin: 0 auto;
-<<<<<<< HEAD
-    /* padding: 20px; */
-=======
     padding: 20px;
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     background-color: #FFFFFF;
     border-radius: 12.088889122009277px;
 }
 
 .images{
     width: 180%;
-<<<<<<< HEAD
-=======
     height: 99vh;
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
 }
 
 .signup-option {
@@ -128,26 +117,11 @@ form {
 
 .login-option {
     margin-left: 60px;
-<<<<<<< HEAD
-        
-    /* width: 117px;
-    height: 29px;
-    margin-right: 175px; */
-
-=======
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 21.1556px;
-<<<<<<< HEAD
-
     color: #55229E;
-    /* Inside auto layout */
-
-=======
-    color: #55229E;
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -160,10 +134,6 @@ form {
 }
 
 .signbtn{
-<<<<<<< HEAD
-=======
-    color: white;
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
     display: center;
     justify-content: center;
     justify-items: center;
@@ -190,9 +160,6 @@ form {
     justify-content: center;
 }
 
-<<<<<<< HEAD
-}
-=======
 @media (min-width: 600px) and (max-width:1200px){
    img.images { 
     position:none;
@@ -203,4 +170,3 @@ form {
         margin: 0;
     } 
 }
->>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939

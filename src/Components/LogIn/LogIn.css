@@ -7,6 +7,15 @@
   width: 100%;
 }
 
+input.checkbox{
+  background-color: #55229e;
+}
+
+label {
+  color: #c4c4c4;
+  font-weight: 500;
+}
+
 .login img {
   width: 120%;
   height: 99vh;

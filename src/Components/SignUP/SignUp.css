@@ -87,7 +87,11 @@ input[type=password] {
 }
 
 .Signup-container {
+
     height: 345px;
+
+    height: 343px;
+
 }
 
 form {
@@ -95,12 +99,15 @@ form {
     text-align: center;
     margin: 0 auto;
     /* padding: 20px; */
+    padding: 20px;
     background-color: #FFFFFF;
     border-radius: 12.088889122009277px;
 }
 
 .images{
     width: 180%;
+
+    height: 99vh;
 }
 
 .signup-option {
@@ -116,11 +123,9 @@ form {
 
 .login-option {
     margin-left: 60px;
-        
     /* width: 117px;
     height: 29px;
     margin-right: 175px; */
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -128,7 +133,7 @@ form {
 
     color: #55229E;
     /* Inside auto layout */
-
+    color: #55229E;
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -141,6 +146,7 @@ form {
 }
 
 .signbtn{
+    color: white;
     display: center;
     justify-content: center;
     justify-items: center;
@@ -167,3 +173,13 @@ form {
     justify-content: center;
 }
 
+@media (min-width: 600px) and (max-width:1200px){
+   img.images { 
+    position:none;
+    display: none; 
+    margin: 0;  
+    }
+    div.Signup-container{
+        margin: 0;
+    } 
+}

@@ -3,26 +3,58 @@ import "./LogIn.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import LoginImg from "../Assets/login.jpeg";
+import { useNavigate } from "react-router-dom";
+
 
 function LogIn() {
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
+  
+  const [userLoginDetail, setUserLoginDetail] = useState({
+    password: "",
+    emailAddress: ""
+  });
+  const navigate = useNavigate();
 
-  const baseUrl = "https://jsonplaceholder.typicode.com/post";
+  // const [user, setUser] = React.useState();
+  if(!userLoginDetail){
+    return <LogIn setUserLoginDetail={setUserLoginDetail} />
+  } 
 
-  const postData = (e) => {
-    e.preventDafualt();
-    axios
-      .post(baseUrl, {
-        email,
-        password,
-      })
-      .then((res) => console.log(res))
-      .catch((res) => console.log(res));
 
-    setEmail("");
-    setPassword("");
-  };
+
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    setUserLoginDetail((prevState) => {
+        return {
+            ...prevState,
+            [name]: value
+        }
+    })
+   }
+   
+   
+
+  const baseUrl = "https://localhost:8080/api/v1/users/login";
+
+  const validateUser = async (event) => {
+    event.preventDefault()
+       console.log(userLoginDetail)
+       const response = await fetch(baseUrl, {
+           method: 'POST',
+           body: JSON.stringify(userLoginDetail),
+           headers: {
+               "Content-type": "application/json"
+           }
+       })
+       const data = await response.json()
+       console.log(data)
+       navigate("/Dashboard", {
+        state:{
+            emailAddress: userLoginDetail.emailAddress,
+            password: userLoginDetail.password
+        }
+       })
+
+   };
 
   return (
     <div className="login">
@@ -38,9 +70,10 @@ function LogIn() {
             <input
               placeholder="Email"
               className="input_box"
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="emailAddress"
+              type="email"
+              onChange={handleChange}
+              value={userLoginDetail.emailAddress} 
               required
             />
           </label>
@@ -50,16 +83,20 @@ function LogIn() {
             <input
               placeholder="Password"
               className="input_box"
-              type="text"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              
+              type="password"
+              name="password"
+              value={userLoginDetail.password} 
+              onChange={handleChange}
               required
             />
           </label>
           </div>
           <div className="remember">
             <div className="checker">
-              <input type="checkbox" value={postData.rememberMe}/>
+              <input type="checkbox" />
+              {/* value={validateUser.rememberMe} */}
+
               <span className="rem-me">Remember Me</span>
             </div>
               <p>                
@@ -74,8 +111,11 @@ function LogIn() {
                 </p>
             </div>
           </div>
-          <button className="login_submit" onClick={postData}>
-            Log In
+          <button className="login_submit" onClick={validateUser}>
+          <Link to="/Dashboard">
+                {""}
+                <span className="sign_span">Log In</span>
+              </Link>
           </button>
           <div className="sign_link">
             <p className="dont_have">Don't have an Account?</p>

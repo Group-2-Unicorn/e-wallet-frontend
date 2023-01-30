@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c427f98dd1a8f1b67eae1c52fb2bd7f79605939
 * {
   margin: 0%;
 }
@@ -20,8 +24,15 @@
 .input_box {
   border: 1px solid gray;
   border-radius: 8px;
+
   background-color: white;
   color: white;
+
+  background-color: white;
+  color: white;
+
+  background-color: #ffffff;
+  color: #55229e;
 }
 
 .login h2 {

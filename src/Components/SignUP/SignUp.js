@@ -2,10 +2,8 @@ import "./SignUp.css";
 import { json, Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "../Assets/img.jpeg";
-import React, { useState, useEffect} from "react";
-import Verification from "../VerifyPage/Verification";
-
-
+import React, {useState, useEffect} from 'react';
+import Verification from "../Verification/Verification";
 
 function SignUp(){
     const [usersDetail, setUsersDetail] = useState({
@@ -42,7 +40,7 @@ function SignUp(){
     })
    }
    
-   const url = "http://localhost:8080/api/v1/registration/register"
+   const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
    const postData = async (event) => {
     event.preventDefault()
        console.log(usersDetail)
@@ -78,7 +76,10 @@ function SignUp(){
                     method="post"
                     className="sign-up-form">
                     <label>
-                        <input className="input_box"
+                        <input 
+                            value={usersDetail.firstName} 
+                            onChange={handleChange}
+                            name="firstName"
                             type="text"
                             placeholder="First Name"
                             required
@@ -87,6 +88,8 @@ function SignUp(){
 
                     <label>
                         <input className="input_box"
+                            value={usersDetail.lastName} 
+                            onChange={handleChange}
                             type="text"
                             name="lastName"
                             placeholder="Last Name"
@@ -142,6 +145,15 @@ function SignUp(){
                    <span className="signbtn">Sign Up</span> 
                    </a></button>
                    <Verification onClose={() => setShow(false)} show={show} />
+                    <span className="signbtn">Sign Up</span> 
+                    <Link to="/OTP" className="login-option" style={{textDecoration: "none"}}>
+                                {""}
+                                
+                            </Link>
+                   
+                </button>
+                <Verification onClick={() => setShow(false)} show={show} />
+
             </div>
         </div>
     )

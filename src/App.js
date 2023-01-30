@@ -9,12 +9,9 @@ import OTP from "./Components/OTPInputPage/OTP";
 // import Verification from "./Components/Verification/Verification";
 import Dashboard from "./Components/Dashboard/Dashboard"
 
-
-
 function App() {
   
   return (
-    <div className="App">
       <Router>
           <Routes>
             <Route path="/" element={<LogIn/>} />
@@ -23,10 +20,10 @@ function App() {
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/OTP"  element={<OTP /> } />
             <Route path="/Verification" element={<Verification/>} />
+            <Route path="/OTP"  element={<OTP /> } />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           </Routes>
       </Router>
-    </div>
   );
 }
 

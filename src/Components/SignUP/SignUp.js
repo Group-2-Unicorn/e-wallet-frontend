@@ -5,8 +5,6 @@ import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
 
-
-
 function SignUp(){
     const [usersDetail, setUsersDetail] = useState({
         firstName: "",
@@ -42,7 +40,7 @@ function SignUp(){
     })
    }
    
-   const url = "http://localhost:8080/api/v1/registration/register"
+   const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
    const postData = async (event) => {
     event.preventDefault()
        console.log(usersDetail)
@@ -89,7 +87,7 @@ function SignUp(){
                     </label>
 
                     <label>
-                        <input 
+                        <input className="input_box"
                             value={usersDetail.lastName} 
                             onChange={handleChange}
                             type="text"

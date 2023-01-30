@@ -11,8 +11,13 @@ function LogIn() {
     password: "",
     emailAddress: ""
   });
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  // const [user, setUser] = React.useState();
+  if(!userLoginDetail){
+    return <LogIn setUserLoginDetail={setUserLoginDetail} />
+  } 
+
 
   // const [user, setUser] = React.useState();
   if(!userLoginDetail){

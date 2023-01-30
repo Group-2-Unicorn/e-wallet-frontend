@@ -2,8 +2,8 @@ import "./SignUp.css";
 import { json, Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "../Assets/img.jpeg";
-import React, {useState, useEffect} from 'react';
-import Verification from "../Verification/Verification";
+import React, { useState, useEffect} from "react";
+import Verification from "../VerifyPage/Verification";
 
 
 
@@ -78,10 +78,7 @@ function SignUp(){
                     method="post"
                     className="sign-up-form">
                     <label>
-                        <input 
-                            value={usersDetail.firstName} 
-                            onChange={handleChange}
-                            name="firstName"
+                        <input className="input_box"
                             type="text"
                             placeholder="First Name"
                             required
@@ -89,9 +86,7 @@ function SignUp(){
                     </label>
 
                     <label>
-                        <input 
-                            value={usersDetail.lastName} 
-                            onChange={handleChange}
+                        <input className="input_box"
                             type="text"
                             name="lastName"
                             placeholder="Last Name"
@@ -140,15 +135,13 @@ function SignUp(){
                                        
                     style={{textDecoration: "none"}}
                     >
-                    <span className="signbtn">Sign Up</span> 
-                    <Link to="/OTP" className="login-option" style={{textDecoration: "none"}}>
-                                {""}
-                                
-                            </Link>
-                   
-                </button>
-                <Verification onClick={() => setShow(false)} show={show} />
-                   
+                    <Link className="login-option" style={{textDecoration: "none"}}>
+                        {""}
+                    </Link>
+                    <a href="/Verification" style={{textDecoration: "none"}}>
+                   <span className="signbtn">Sign Up</span> 
+                   </a></button>
+                   <Verification onClose={() => setShow(false)} show={show} />
             </div>
         </div>
     )

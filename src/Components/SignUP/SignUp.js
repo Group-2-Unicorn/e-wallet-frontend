@@ -143,17 +143,9 @@ function SignUp(){
                     </Link>
                     <a href="/Verification" style={{textDecoration: "none"}}>
                    <span className="signbtn">Sign Up</span> 
-                   </a></button>
-                   <Verification onClose={() => setShow(false)} show={show} />
-                    <span className="signbtn">Sign Up</span> 
-                    <Link to="/OTP" className="login-option" style={{textDecoration: "none"}}>
-                                {""}
-                                
-                            </Link>
-                   
+                   </a>
                 </button>
-                <Verification onClick={() => setShow(false)} show={show} />
-
+                   <Verification onClose={() => setShow(false)} show={show} />
             </div>
         </div>
     )

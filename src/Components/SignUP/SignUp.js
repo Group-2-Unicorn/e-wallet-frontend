@@ -40,7 +40,7 @@ function SignUp(){
     })
    }
    
-   const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
+   const url = "https://8c0b-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
    const postData = async (event) => {
     event.preventDefault()
        console.log(usersDetail)
@@ -76,6 +76,7 @@ function SignUp(){
                         className="sign-up-form">
                         <label>
                             <input 
+                                className="firstName"
                                 value={usersDetail.firstName} 
                                 onChange={handleChange}
                                 name="firstName"
@@ -86,7 +87,8 @@ function SignUp(){
                         </label>
 
                         <label>
-                            <input className="input_box"
+                            <input 
+                                className="lastName"
                                 value={usersDetail.lastName} 
                                 onChange={handleChange}
                                 type="text"
@@ -98,6 +100,7 @@ function SignUp(){
                         
                         <label>
                             <input 
+                                className="email"
                                 type="email"
                                 value={usersDetail.emailAddress} 
                                 onChange={handleChange}
@@ -109,6 +112,7 @@ function SignUp(){
 
                         <label>
                             <input 
+                                className="password"
                                 value={usersDetail.password} 
                                 onChange={handleChange}
                                 type="password"

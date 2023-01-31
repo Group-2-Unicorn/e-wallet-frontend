@@ -61,78 +61,77 @@ function SignUp(){
 
    };
     return(
-        <div className="Signup-container">
-            <div className="left-side"> 
-                <img className="images" src={image} alt=""/>
+        <div className="signup-container">
+            <div className="sign-up-left-container"> 
+                <img className="logo" src={image} alt=""/>
             </div>
 
-            <div className="form-container">
-                <div className="right-side">
-                    <h3 className='welcome'>Welcome!</h3>
-                    <p className='signup-info'>Sign up by entering the information below</p>
-                </div>
-                {/* {alert && <Verification onClose={() => setShow(false)} show={show}  />} */}
-                <form 
-                    method="post"
-                    className="sign-up-form">
-                    <label>
-                        <input 
-                            value={usersDetail.firstName} 
-                            onChange={handleChange}
-                            name="firstName"
-                            type="text"
-                            placeholder="First Name"
-                            required
-                        />
-                    </label>
+            <div className="sign-up-right-container">
+                <h2 className='header-texts'>Welcome!</h2>
+                <h4 className="header-paragraph">Sign up by entering the information below</h4>
+                <div className="form-container">
+                    {/* {alert && <Verification onClose={() => setShow(false)} show={show}  />} */}
+                    <form 
+                        method="post"
+                        className="sign-up-form">
+                        <label>
+                            <input 
+                                value={usersDetail.firstName} 
+                                onChange={handleChange}
+                                name="firstName"
+                                type="text"
+                                placeholder="First Name"
+                                required
+                            />
+                        </label>
 
-                    <label>
-                        <input className="input_box"
-                            value={usersDetail.lastName} 
-                            onChange={handleChange}
-                            type="text"
-                            name="lastName"
-                            placeholder="Last Name"
-                            required
-                        />
-                    </label>
-                    
-                    <label>
-                        <input 
-                            type="email"
-                            value={usersDetail.emailAddress} 
-                            onChange={handleChange}
-                            name="emailAddress"
-                            placeholder="email"
-                            required
-                        />
-                    </label>
+                        <label>
+                            <input className="input_box"
+                                value={usersDetail.lastName} 
+                                onChange={handleChange}
+                                type="text"
+                                name="lastName"
+                                placeholder="Last Name"
+                                required
+                            />
+                        </label>
+                        
+                        <label>
+                            <input 
+                                type="email"
+                                value={usersDetail.emailAddress} 
+                                onChange={handleChange}
+                                name="emailAddress"
+                                placeholder="email"
+                                required
+                            />
+                        </label>
 
-                    <label>
-                        <input 
-                            value={usersDetail.password} 
-                            onChange={handleChange}
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            required
-                        />
-                    </label>
-
-                </form>
+                        <label>
+                            <input 
+                                value={usersDetail.password} 
+                                onChange={handleChange}
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                required
+                            />
+                        </label>
+                    </form>
             
-                <div className="optionsContainer">
+                <div className="options-container">
                     <p className='signup-option'>Already have an account?</p>
-                        <p>
-                            <Link to="/Login" className="login-option" style={{textDecoration: "none"}}>
-                                {""}
-                                LogIn
-                            </Link>
-                        </p>
+                    <p>
+                        <Link to="/Login" className="login-option" style={{textDecoration: "none"}}>
+                            {""}
+                                
+                        </Link>
+                        Login
+                    </p>
                 </div>
                 <button 
                     to="/OTP"
-                    className="signup-btn"
+                    className="signup-submit-button"
                     type="submit"
                     onClick={postData}
                                        
@@ -149,7 +148,8 @@ function SignUp(){
                    
             </div>
         </div>
-    )
+    </div>
+)
 }
 
 export default SignUp;

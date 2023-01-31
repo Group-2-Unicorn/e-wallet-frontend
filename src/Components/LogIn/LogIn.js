@@ -14,15 +14,7 @@ function LogIn() {
   const navigate = useNavigate();
 
   // const [user, setUser] = React.useState();
-  if(!userLoginDetail){
-    return <LogIn setUserLoginDetail={setUserLoginDetail} />
-  } 
-
-
-  // const [user, setUser] = React.useState();
-  if(!userLoginDetail){
-    return <LogIn setUserLoginDetail={setUserLoginDetail} />
-  } 
+  
 
   
 
@@ -61,20 +53,25 @@ function LogIn() {
 
    };
 
+   if(!userLoginDetail && validateUser){
+    return <LogIn setUserLoginDetail={setUserLoginDetail} />
+  } 
+
+
   return (
-    <div className="login">
-      <div className="login_left">
-        <img src={LoginImg} alt=""/>
+    <div className="login-container">
+      <div className="login-left-container">
+        <img className="image-container" src={LoginImg} alt=""/>
       </div>
-      <div className="login_right">
-        <h2 >Welcome Back!</h2>
-        <h4>Log in to your Dashboard</h4>
+      <div className="login-right-container">
+        <h2 className="header-text">Welcome Back!</h2>
+        <h4 header-paragraph>Log in to your Dashboard</h4>
         <div>
             <div>
           <label>
             <input
               placeholder="Email"
-              className="input_box"
+              className="email_box"
               name="emailAddress"
               type="email"
               onChange={handleChange}
@@ -87,7 +84,7 @@ function LogIn() {
           <label>
             <input
               placeholder="Password"
-              className="input_box"
+              className="password_box"
               
               type="password"
               name="password"
@@ -97,7 +94,7 @@ function LogIn() {
             />
           </label>
           </div>
-          <div className="remember">
+          <div className="checker-container">
             <div className="checker">
               <input type="checkbox" />
               {/* value={validateUser.rememberMe} */}
@@ -106,7 +103,7 @@ function LogIn() {
             </div>
               <p>                
                 <Link
-                  className="pass"
+                  className="password"
                   to="/ForgetPassword"
                   style={{ textDecoration: "none" }}
                 >
@@ -116,18 +113,18 @@ function LogIn() {
                 </p>
             </div>
           </div>
-          <button className="login_submit" onClick={validateUser}>
+          <button className="login-submit-button" onClick={validateUser}>
           <Link to="/Dashboard">
                 {""}
-                <span className="sign_span">Log In</span>
               </Link>
+              <span className="login-submit-text">Log In</span>
           </button>
-          <div className="sign_link">
-            <p className="dont_have">Don't have an Account?</p>
+          <div className="sign-up-container">
+            <p className="create-account-option">Don't have an Account?</p>
             <p>
               <Link to="/SignUp">
                 {""}
-                <span className="sign_span">Sign Up</span>
+                <span className="sign-up-text">Sign Up</span>
               </Link>
             </p>
           </div>

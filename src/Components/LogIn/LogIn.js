@@ -6,11 +6,53 @@ import { useNavigate } from "react-router-dom";
 
 
 function LogIn() {
+
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
   
-  const [userLoginDetail, setUserLoginDetail] = useState({
-    password: "",
-    emailAddress: ""
-  });
+  // const [userLoginDetail, setUserLoginDetail] = useState({
+  //   password: "",
+  //   emailAddress: ""
+  // });
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    fetch("https://7f53-154-113-161-131.eu.ngrok.io/api/v1/users/login", {
+      method: "POST",
+      body: JSON.stringify({
+        emailAddress: formData.get("emailAddress"),
+        password: formData.get("password"),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+  },
+      
+
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.fieldErrors){
+          data.fieldErrors.forEach(fieldError => {
+            if(fieldError.field === "emailAddress"){
+              setEmailAddress(fieldError.message);
+                }
+            if(fieldError.field === "password"){
+              setPassword(fieldError.message);
+            }
+          });
+        }else{
+              alert("Success !!!");
+            }
+          })
+          .catch((err) => err && console.log(err)
+    );
+  };
+
+
+
   const navigate = useNavigate();
 
   // const [user, setUser] = React.useState();
@@ -18,44 +60,43 @@ function LogIn() {
 
   
 
-  const handleChange = (event) => {
-    const {name, value} = event.target
-    setUserLoginDetail((prevState) => {
-        return {
-            ...prevState,
-            [name]: value
-        }
-    })
-   }
+  // const handleChange = (event) => {
+  //   const {name, value} = event.target
+  //   setUserLoginDetail((prevState) => {
+  //       return {
+  //           ...prevState,
+  //           [name]: value
+  //       }
+  //   })
+  //  }
    
    
 
-  const baseUrl = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/users/login";
+  // const baseUrl = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/users/login";
 
-  const validateUser = async (event) => {
-    event.preventDefault()
-       console.log(userLoginDetail)
-       const response = await fetch(baseUrl, {
-           method: 'POST',
-           body: JSON.stringify(userLoginDetail),
-           headers: {
-               "Content-type": "application/json"
-           }
-       })
-       const data = await response.json()
-       console.log(data)
-       navigate("/Dashboard", {
-        state:{
-            emailAddress: userLoginDetail.emailAddress,
-            password: userLoginDetail.password
-        }
-       })
+  // const validateUser = async (event) => {
+  //   event.preventDefault()
+  //      console.log(userLoginDetail)
+  //      const response = await fetch(baseUrl, {
+  //          method: 'POST',
+  //          body: JSON.stringify(userLoginDetail),
+  //          headers: {
+  //              "Content-type": "application/json"
+  //          }
+  //      })
+  //      const data = await response.json()
+  //      console.log(data)
+  //      navigate("/Dashboard", {
+  //       state:{
+  //           emailAddress: userLoginDetail.emailAddress,
+  //           password: userLoginDetail.password
+  //       }
+  //      })
 
-   };
+  //  };
 
-   if(!userLoginDetail && validateUser){
-    return <LogIn setUserLoginDetail={setUserLoginDetail} />
-  } 
+  //  if(!userLoginDetail && validateUser){
+  //   return <LogIn setUserLoginDetail={setUserLoginDetail} />
 
 
   return (
@@ -67,20 +108,32 @@ function LogIn() {
         <h2 className="header-text">Welcome Back!</h2>
         <h4 header-paragraph>Log in to your Dashboard</h4>
         <div>
-            <div>
-          <label>
+        <form id="stripe-login" method="POST" onSubmit={onSubmit}>
+        <input type="text" name="email"/>
+          {
+            emailAddress ? <span style={{ color: 'red', fontSize: '12px'}}>{emailAddress}</span> : ''
+          }
+        
+          <input type="password" name="password"/>
+          {
+            password ? <span style={{ color: 'red', fontSize: '12px'}}>{password}</span> : ''
+          }
+          
+          {/* <label>
             <input
               placeholder="Email"
               className="email_box"
               name="emailAddress"
               type="email"
-              onChange={handleChange}
-              value={userLoginDetail.emailAddress} 
+              onChange={onSubmit}
+              // value={userLoginDetail.emailAddress} 
               required
+              
             />
+            {emailAddress ?<p className="error">{emailAddress}</p>  : ''}
+            
           </label>
-          </div>
-            <div>
+          <div>
           <label>
             <input
               placeholder="Password"
@@ -88,12 +141,15 @@ function LogIn() {
               
               type="password"
               name="password"
-              value={userLoginDetail.password} 
-              onChange={handleChange}
+              // value={userLoginDetail.password} 
+              onChange={onSubmit}
               required
             />
+            {password ?<p className="error">{password}</p>  : ''}
           </label>
-          </div>
+          
+          </div> */}
+        </form>
           <div className="checker-container">
             <div className="checker">
               <input type="checkbox" />
@@ -113,7 +169,7 @@ function LogIn() {
                 </p>
             </div>
           </div>
-          <button className="login-submit-button" onClick={validateUser}>
+          <button className="login-submit-button" >
           <Link to="/Dashboard">
                 {""}
               </Link>

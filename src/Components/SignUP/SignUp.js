@@ -40,7 +40,7 @@ function SignUp(){
     })
    }
    
-   const url = "https://8c0b-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
+   const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
    const postData = async (event) => {
     event.preventDefault()
        console.log(usersDetail)
@@ -68,7 +68,7 @@ function SignUp(){
 
             <div className="sign-up-right-container">
                 <h2 className='header-texts'>Welcome!</h2>
-                <h4 className="header-paragraph">Sign up by entering the information below</h4>
+                <h4 className="headers-paragraph">Sign up by entering the information below</h4>
                 <div className="form-container">
                     {/* {alert && <Verification onClose={() => setShow(false)} show={show}  />} */}
                     <form 
@@ -112,7 +112,7 @@ function SignUp(){
 
                         <label>
                             <input 
-                                className="password"
+                                className="passwords"
                                 value={usersDetail.password} 
                                 onChange={handleChange}
                                 type="password"
@@ -126,11 +126,11 @@ function SignUp(){
                 <div className="options-container">
                     <p className='signup-option'>Already have an account?</p>
                     <p>
-                        <Link to="/Login" className="login-option" style={{textDecoration: "none"}}>
+                        <Link to="/LogIn" className="login-option" style={{textDecoration: "none"}}>
                             {""}
-                                
+                            <span className="login-option">Login</span> 
                         </Link>
-                        Login
+                        
                     </p>
                 </div>
                 <button 
@@ -139,13 +139,14 @@ function SignUp(){
                     type="submit"
                     onClick={postData}
                                        
-                    style={{textDecoration: "none"}}
+                    // style={{textDecoration: "none"}}
                     >
-                    <span className="signbtn">Sign Up</span> 
-                    <Link to="/OTP" className="login-option" style={{textDecoration: "none"}}>
-                                {""}
-                                
-                            </Link>
+                       <Link to="/SignUp">
+                  {""}
+                  <span className="signup-submit-text">Sign Up</span>
+                </Link>
+                           
+                   
                    
                 </button>
                 <Verification onClick={() => setShow(false)} show={show} />

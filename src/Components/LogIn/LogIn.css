@@ -89,7 +89,7 @@ input.password_box{
 
 .email_box{
   width: 70%;
-  height: 50px;
+  height: 25px;
   border: 1px solid #c4c4c4;
   border-radius: 12.088889122009277px;
   padding: 12px 20px;
@@ -99,7 +99,7 @@ input.password_box{
 
 .password_box{
   width: 70%;
-  height: 50px;
+  height: 25px;
   border: 1px solid #c4c4c4;
   border-radius: 12.088889122009277px;
   padding: 12px 20px;
@@ -140,7 +140,7 @@ input.check-box{
 
 .login-submit-button {
   width: 70%;
-  height: 50px;
+  height: 65px;
   background-color: #55229e;
   border: none;
   outline: none;
@@ -233,9 +233,9 @@ flex-grow: 0;
 }
 
 @media (min-width: 600px) and (max-width:1200px){
-  img.image-container{
+  .image-container, .login-right-container {
     width: 100%;
-    height: 108vh;
+    /* height: 260vh; */
   } 
   
 }

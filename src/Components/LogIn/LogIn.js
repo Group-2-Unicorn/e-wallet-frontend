@@ -121,12 +121,6 @@ function LogIn() {
             </button>
             <div className="sign-up-container">
               <p className="create-account-option">Don't have an Account?</p>
-              <p>
-                <Link to="/SignUp">
-                  {""}
-                  <span className="sign-up-text">Sign Up</span>
-                </Link>
-              </p>
             </div>
         </div>
         </div>

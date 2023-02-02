@@ -14,6 +14,10 @@ function SignUp(){
     }
     )
 
+    const [showModal, setShowModal] = useState(false);
+
+    const toggleModal = () => setShowModal(!showModal);
+
     
     const [alert, setAlert] = useState(false);
     const navigate = useNavigate()
@@ -27,9 +31,6 @@ function SignUp(){
     }, [alert])
 
 
-    const [show, setShow] = useState(false);
-
-
    const handleChange = (event) => {
     const {name, value} = event.target
     setUsersDetail((prevState) => {
@@ -41,6 +42,7 @@ function SignUp(){
    }
    
    const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
+
    const postData = async (event) => {
     event.preventDefault()
        console.log(usersDetail)
@@ -55,11 +57,16 @@ function SignUp(){
        console.log(data)
        navigate("/OTP", {
         state:{
-            emailAddress: usersDetail.emailAddress
+            emailAddress: usersDetail.emailAddress,
+            password: usersDetail.password
         }
        })
 
    };
+    const handleClick = () => {
+        postData();
+        toggleModal();
+    };
     return(
         <div className="signup-container">
             <div className="sign-up-left-container"> 
@@ -134,22 +141,22 @@ function SignUp(){
                     </p>
                 </div>
                 <button 
-                    to="/OTP"
+                    // to="/OTP"
                     className="signup-submit-button"
                     type="submit"
-                    onClick={postData}
+                
+                    onClick={handleClick}
                                        
-                    // style={{textDecoration: "none"}}
+                    style={{textDecoration: "none"}}
                     >
-                       <Link to="/SignUp">
-                  {""}
-                  <span className="signup-submit-text">Sign Up</span>
-                </Link>
-                           
-                   
-                   
+                       {/* <Link to="/OTP">
+                        {""}
+                        
+                        
+                        </Link> */}
+                        <span className="signup-submit-text">Sign Up</span> 
                 </button>
-                <Verification onClick={() => setShow(false)} show={show} />
+                <Verification  />
                    
             </div>
         </div>

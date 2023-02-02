@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.90ed9d34.css",
+    "main.js": "/static/js/main.fe6b8f74.js",
+    "static/js/787.7efd31bd.chunk.js": "/static/js/787.7efd31bd.chunk.js",
+    "static/media/login.jpeg": "/static/media/login.0ea15c54a638404568f5.jpeg",
+    "static/media/img.jpeg": "/static/media/img.1311456a49d6d435758b.jpeg",
+    "static/media/resetPassword.png": "/static/media/resetPassword.74a8fd92ec825b025f25.png",
+    "index.html": "/index.html",
+    "main.90ed9d34.css.map": "/static/css/main.90ed9d34.css.map",
+    "main.fe6b8f74.js.map": "/static/js/main.fe6b8f74.js.map",
+    "787.7efd31bd.chunk.js.map": "/static/js/787.7efd31bd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90ed9d34.css",
+    "static/js/main.fe6b8f74.js"
+  ]
+}

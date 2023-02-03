@@ -188,6 +188,15 @@
   flex-grow: 0;
 }
 
+.login-container{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-items: center;
+  justify-content: space-evenly;
+
+}
+
 .sign-up-text{
   
 width: 85px;
@@ -204,8 +213,6 @@ text-align: right;
 text-decoration-line: underline;
 
 color: #55229E;
-
-
 /* Inside auto layout */
 
 flex: none;
@@ -217,7 +224,10 @@ flex-grow: 0;
 @media (min-width: 600px) and (max-width:1200px){
   .image-container, .login-right-container {
     width: 100%;
-    height: 200vh;
+    height: 100vh;
+   
   } 
   
 }
+
+

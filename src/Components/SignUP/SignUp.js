@@ -1,26 +1,30 @@
 import "./SignUp.css";
-import { json, Link} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
+import  {useNavigate } from 'react-router-dom';
 import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
 
 function SignUp(){
+   
     const [usersDetail, setUsersDetail] = useState({
         firstName: "",
         lastName: "",
         emailAddress: "",
         password: ""
-    }
-    )
+    })
 
-    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
 
-    const toggleModal = () => setShowModal(!showModal);
+    // const [showModal, setShowModal] = useState(false);
+
+    // const toggleModal = () => setShowModal(!showModal);
 
     
     const [alert, setAlert] = useState(false);
-    const navigate = useNavigate()
+
+    
+
     useEffect(() => {
         if(alert) {
             setTimeout(() => {
@@ -44,7 +48,7 @@ function SignUp(){
    const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
 
    const postData = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
        console.log(usersDetail)
        const response = await fetch(url, {
            method: 'POST',
@@ -62,11 +66,8 @@ function SignUp(){
         }
        })
 
-   };
-    const handleClick = () => {
-        postData();
-        toggleModal();
-    };
+    }
+    
     return(
         <div className="signup-container">
             <div className="sign-up-left-container"> 
@@ -77,10 +78,12 @@ function SignUp(){
                 <h2 className='header-texts'>Welcome!</h2>
                 <h4 className="headers-paragraph">Sign up by entering the information below</h4>
                 <div className="form-container">
-                    {/* {alert && <Verification onClose={() => setShow(false)} show={show}  />} */}
+                    {/* {alert && <Verification onClose={() => setShowModal(false)} show={showModal}  />} */}
                     <form 
                         method="post"
-                        className="sign-up-form">
+                        className="sign-up-form"
+                        
+                        >
                         <label>
                             <input 
                                 className="firstName"
@@ -141,22 +144,20 @@ function SignUp(){
                     </p>
                 </div>
                 <button 
-                    // to="/OTP"
+                    to="/OTP"
                     className="signup-submit-button"
                     type="submit"
-                
-                    onClick={handleClick}
-                                       
+                    onClick={postData}       
                     style={{textDecoration: "none"}}
                     >
-                       {/* <Link to="/OTP">
+                       <Link to="/OTP">
                         {""}
                         
                         
-                        </Link> */}
+                        </Link>
                         <span className="signup-submit-text">Sign Up</span> 
                 </button>
-                <Verification  />
+                {/* <Verification  /> */}
                    
             </div>
         </div>

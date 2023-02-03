@@ -1,32 +1,23 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import './otp.css'
+import  {useNavigate } from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import image from "../Assets/img.jpeg";
 
-const OTP = () => {
-    const [otp, setOtp] = useState("");
-    const [error, setError] = useState('');
-    const location = useLocation()
-    const {emailAddress} = location.state
 
-    const [inputFields, setInputFields] = useState([
+const OTP = () => {
+    const [otpInputFields, setOtpInputFields] = useState([
         { name: "field1", value: "" },
         { name: "field2", value: "" },
         { name: "field3", value: "" },
         { name: "field4", value: "" },
-      ]);
-    
+    ]);
+
+    const navigate = useNavigate()
+
+    const location = useLocation()
+    const {emailAddress} = location.state
     const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/verify"
-
-
-    const handleChange = (index, event) => {
-        const newInputFields = [...inputFields];
-        newInputFields[index].value = event.target.value;
-        setInputFields(newInputFields);
-      };
-      
-      
-
 
     const verify = async (par) => {
         const response = await fetch( url, {
@@ -37,143 +28,95 @@ const OTP = () => {
             }
         })
         const data = await response.json()
-        if (data.error) {
-            setError(data.error)
-        } else {
-            console.log(data)
-        }
+        console.log(data)
     }
+    
 
     const postData = () => {
+        console.log(postData)
+        
         const otpObj = {
             emailAddress: emailAddress,
-            oneTimePassword: otp
+            oneTimePassword: otpInputFields.map(inputField => inputField.value).join('')
         }
+        console.log(otpObj)
         verify(otpObj)
+        navigate("/LogIn");
     }
-    const handleOtp = (event) => {
-        const {value} = event.target
-        setOtp(value)
-    }
+    
+    const handleOtp = (index) => (event) => {
+        const newOtpInputFields = [...otpInputFields];
+        newOtpInputFields[index].value = event.target.value;
+        setOtpInputFields(newOtpInputFields);
+      };
 
     return (
         <div className="otp-container">
             <div className="otp-left-side"> 
-                <img className="otp-image" src={image} alt=""/>
+                <img className="image" src={image} alt=""/>
             </div>
 
             <div className="otp-right-container">
-            {inputFields.map((inputField, index) => (
-                <div className="input-container" key={inputField.name}>
-                    {error && <p className='error'>{error}</p>}
-                    <input
-                        name={inputField.name}
-                        type="text"
-                        className="otp-input-box"
-                        value={inputField.value}
-                        onChange={(event) => handleChange(index, event)}
-                        placeholder="-"
-                        required
-                    />
-                </div>
-                            ))}
+                <div className="otp-form-container">
+                    <div className="otp-right-side">
+                        <p className='otp-text'>Enter your OTP number</p>
+                    </div>
+                    <div className="otp-form-div">
+
+                    <form>
+                        <input 
                         
+                            name={otpInputFields[0].value}
+                            type="text"
+                            placeholder="-"
+                            required
+                            value={otpInputFields[0].value} 
+                            onChange={handleOtp(0)}
+                            className="otp-input"
+                        />
+                        <input 
+                            name={otpInputFields[1].value}
+                            className="otp-input"
+                            type="text"
+                            placeholder="-"
+                            required    
+                            value={otpInputFields[1].value}
+                            onChange={handleOtp(1)}
+                        />
+                        <input 
+                            name={otpInputFields[2].value}
+                            className="otp-input"
+                            type="text"
+                            placeholder="-"
+                            required    
+                            value={otpInputFields[2].value}
+                            onChange={handleOtp(2)}
+                        />
+                        <input 
+                            name={otpInputFields[3].value}
+                            className="otp-input"
+                            type="text"
+                            placeholder="-"
+                            required    
+                            value={otpInputFields[3].value}
+                            onChange={handleOtp(3)}
+                        />
+                    
+                    </form>
                         <button 
-                            className="otp-btn"
+                            to="/LogIn"
                             onClick={postData} 
-                        >
-                            <Link to="/LogIn">
-                                Continue
-                            </Link>
-                        </button>
-               
+                            className="otp-btn">
+                                <Link to="/LogIn">
+                                    {""}
+                                </Link>
+                            <span className="continue">Continue</span>
+                    </button>
+                    </div>
+                </div>
             </div>
-            
         </div>
     );
 }
 
 export default OTP;
-
-
-
-
-
-
-// import { Link, useLocation } from "react-router-dom";
-// import './otp.css'
-// import React, {useState, useEffect} from 'react';
-// import image from "../Assets/img.jpeg";
-
-
-// const OTP = () => {
-//     const [otp, setOtp] = useState("");
-//     const location = useLocation()
-//     const {emailAddress} = location.state
-//     const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/verify"
-
-//     const verify = async (par) => {
-//         const response = await fetch( url, {
-//             method: 'POST',
-//             body: JSON.stringify(par),
-//             headers: {
-//                 "Content-type": "application/json"
-//             }
-//         })
-//         const data = await response.json()
-//         console.log(data)
-//     }
-
-//     const postData = () => {
-//         const otpObj = {
-//             emailAddress: emailAddress,
-//             oneTimePassword: otp
-//         }
-//         console.log(otpObj)
-//         verify(otpObj)
-//     }
-//     const handleOtp = (event) => {
-//         const {value} = event.target
-//         setOtp(value)
-//     }
-
-//     return (
-//         <div className="otp-container">
-//             <div className="otp-left-side"> 
-//                 <img className="image" src={image} alt=""/>
-//             </div>
-
-//             <div className="otp-right-container">
-//                 <div className="otp-form-container">
-//                     <div className="otp-right-side">
-//                         <p className='otp-text'>Enter your OTP number</p>
-//                     </div>
-//                     <div className="otp-form-div">
-
-//                     <form>
-//                         <input
-//                             type="text"
-//                             onClick={verify}
-//                             placeholder="-"
-//                             required
-//                             value={otp}
-//                             onChange={handleOtp}
-//                         />
-//                         </form>
-//                         <button 
-//                             to="/LogIn" 
-//                             onClick={postData} 
-//                             className="otp-btn">
-//                             <Link to="/LogIn">
-//                             {""}
-//                             Continue
-//                         </Link>
-//                     </button>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default OTP;

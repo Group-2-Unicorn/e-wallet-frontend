@@ -13,8 +13,8 @@ const ForgotPassword = () => {
   };
 
   return (
-        <div className="reset">
-            <div className="reset_left">
+        <div className="reset-password-container">
+            <div className="reset-password-left-container">
                 <img src={ResetImg} alt=""/>
             </div>
             <div className="reset_right">

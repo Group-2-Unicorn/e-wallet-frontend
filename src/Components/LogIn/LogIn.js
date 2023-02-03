@@ -125,11 +125,11 @@ function Login() {
               </p>
             </div>
             </div>
-            <button className="login-submit-button" onClick={toggleModal} type="submit">Login</button>
-            <showModal />
+            <button className="login-submit-button" type="submit">Login</button>
+            {/* <showModal /> */}
           </form>
-          <Verification />
-          <div className="sign-up-containers">
+          {/* <Verification /> */}
+          <div className="login-container">
             <p className="create-account-options">Don't have an Account?</p>
               <p>
                <Link to="/SignUp">

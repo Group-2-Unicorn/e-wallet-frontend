@@ -4,6 +4,8 @@ import  {useNavigate } from 'react-router-dom';
 import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
+import Button from "../ReUsableComponent/Button/Button";
+
 
 function SignUp(){
    
@@ -78,7 +80,6 @@ function SignUp(){
                 <h2 className='header-texts'>Welcome!</h2>
                 <h4 className="headers-paragraph">Sign up by entering the information below</h4>
                 <div className="form-container">
-                    {/* {alert && <Verification onClose={() => setShowModal(false)} show={showModal}  />} */}
                     <form 
                         method="post"
                         className="sign-up-form"
@@ -143,22 +144,23 @@ function SignUp(){
                         
                     </p>
                 </div>
-                <button 
-                    to="/OTP"
-                    className="signup-submit-button"
+                <Button 
+                    name="Sign up"
+                    width="72%"
+                    height="65px"
+                    backgroundColor="#55229e"
+                    border="none"
+                    outline="none"
+                    color="white"
+                    borderRadius="10px"
+                    padding="20px"
+                    fontSize="large"
+                    cursor="pointer"
+                    margin-top="20px"
                     type="submit"
-                    onClick={postData}       
-                    style={{textDecoration: "none"}}
-                    >
-                       <Link to="/OTP">
-                        {""}
-                        
-                        
-                        </Link>
-                        <span className="signup-submit-text">Sign Up</span> 
-                </button>
-                {/* <Verification  /> */}
-                   
+                    to="/OTP"
+                    onClick={postData}   
+                />                  
             </div>
         </div>
     </div>

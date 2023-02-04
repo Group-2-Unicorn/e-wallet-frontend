@@ -21,6 +21,8 @@
 
 .header-text {
   height: 36px;
+  display: flex;
+  justify-content: center;
   left: 1123px;
   top: 242px;
   font-family: 'Roboto';

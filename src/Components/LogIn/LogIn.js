@@ -4,6 +4,7 @@ import "./LogIn.css";
 import { useNavigate } from "react-router-dom";
 import { Link} from "react-router-dom";
 import Verification from "../Verification/Verification";
+import Button from "../ReUsableComponent/Button/Button";
 
 
 
@@ -125,10 +126,24 @@ function Login() {
               </p>
             </div>
             </div>
-            <button className="login-submit-button" type="submit">Login</button>
-            {/* <showModal /> */}
+            <Button 
+              name="Login"
+              width="77%"
+              height="65px"
+              backgroundColor="#55229e"
+              border="none"
+              outline="none"
+              color="white"
+              borderRadius="10px"
+              padding="20px"
+              fontSize="large"
+              cursor="pointer"
+              margin-top="20px"
+              type="submit"
+            />
+            
           </form>
-          {/* <Verification /> */}
+        
           <div className="login-container">
             <p className="create-account-options">Don't have an Account?</p>
               <p>

@@ -3,6 +3,7 @@ import './otp.css'
 import  {useNavigate } from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import image from "../Assets/img.jpeg";
+import Button from "../ReUsableComponent/Button/Button";
 
 
 const OTP = () => {
@@ -103,9 +104,25 @@ const OTP = () => {
                         />
                     
                     </form>
+                    <Button 
+                        name="Login"
+                        width="77%"
+                        height="65px"
+                        backgroundColor="#55229e"
+                        border="none"
+                        outline="none"
+                        color="white"
+                        borderRadius="10px"
+                        padding="20px"
+                        fontSize="large"
+                        cursor="pointer"
+                        margin-top="20px"
+                        type="submit"
+                        to="/LogIn"
+                        onClick={postData} 
+                    />
                         <button 
-                            to="/LogIn"
-                            onClick={postData} 
+                            
                             className="otp-btn">
                                 <Link to="/LogIn">
                                     {""}

@@ -1,51 +1,22 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import './verification.css'
+import React, { useState } from 'react';
 
+const Verification = ({ isOpen, onClose, children }) => {
+  const [visibility, setVisibility] = useState(isOpen);
 
-const Verification = () => {
-  const [showModal, setShowModal] = useState(false);
-
-
-  const toggleModal = () => setShowModal(!showModal);
-
+  const handleClose = () => {
+    setVisibility(false);
+    onClose();
+  };
 
   return (
-    <div
-      className={`modal ${showModal ? "show" : "hide"}`}
-      tabIndex="-1"
-      role="dialog"
-    >
-      <div className="modal-dialog" role="document">
+    visibility && (
+      <div className="modal-container">
         <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Success</h5>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              onClick={toggleModal}
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <p>Your action was successful.</p>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-dismiss="modal"
-              onClick={toggleModal}
-            >
-              Close
-            </button>
-          </div>
+          <button onClick={handleClose}></button>
+          {children}
         </div>
       </div>
-    </div>
+    )
   );
 };
 

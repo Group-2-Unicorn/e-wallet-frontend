@@ -4,7 +4,7 @@ import  {useNavigate } from 'react-router-dom';
 import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
 import Verification from "../Verification/Verification";
-import Button from "../ReUsableComponent/Button/Button";
+import Button from "../ReUsableComponent/Button";
 
 
 function SignUp(){
@@ -18,9 +18,9 @@ function SignUp(){
 
     const navigate = useNavigate();
 
-    // const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-    // const toggleModal = () => setShowModal(!showModal);
+    const toggleModal = () => setShowModal(!showModal);
 
     
     const [alert, setAlert] = useState(false);
@@ -47,28 +47,64 @@ function SignUp(){
     })
    }
    
-   const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
+   const url = "https://aa94-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
 
-   const postData = async (event) => {
-    event.preventDefault();
-       console.log(usersDetail)
-       const response = await fetch(url, {
-           method: 'POST',
-           body: JSON.stringify(usersDetail),
-           headers: {
-               "Content-type": "application/json"
-           }
-       })
-       const data = await response.json()
-       console.log(data)
-       navigate("/OTP", {
-        state:{
-            emailAddress: usersDetail.emailAddress,
-            password: usersDetail.password
-        }
-       })
-
+   const postData = async () => {
+    //event.preventDefault();
+    console.log(usersDetail)
+    console.log("clicked")
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(usersDetail),
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+    if (data.message === 'Email already exists') {
+      setAlert(true);
+      return;
     }
+    setShowModal(true)
+
+    navigate("/OTP", {
+      state: {
+        emailAddress: usersDetail.emailAddress,
+        password: usersDetail.password
+      }
+    });
+    toggleModal();
+    
+  };
+  
+//   {alert && (
+//     <div className="alert">
+//       Email already exists.
+//     </div>
+//   )}
+  
+
+//    const postData = async (event) => {
+//     event.preventDefault();
+//        console.log(usersDetail)
+//        const response = await fetch(url, {
+//            method: 'POST',
+//            body: JSON.stringify(usersDetail),
+//            headers: {
+//                "Content-type": "application/json"
+//            }
+//        })
+//        const data = await response.json()
+//        console.log(data)
+//        navigate("/OTP", {
+//         state:{
+//             emailAddress: usersDetail.emailAddress,
+//             password: usersDetail.password
+//         }
+//        })
+
+//     }
     
     return(
         <div className="signup-container">
@@ -80,6 +116,8 @@ function SignUp(){
                 <h2 className='header-texts'>Welcome!</h2>
                 <h4 className="headers-paragraph">Sign up by entering the information below</h4>
                 <div className="form-container">
+                {alert && (<div className="alert"> Email already exists.</div>)}
+  
                     <form 
                         method="post"
                         className="sign-up-form"
@@ -139,11 +177,24 @@ function SignUp(){
                     <p>
                         <Link to="/LogIn" className="login-option" style={{textDecoration: "none"}}>
                             {""}
-                            <span className="login-option">Login</span> 
+                             <span className="login-option">Login</span>
                         </Link>
                         
                     </p>
                 </div>
+                <div className="modal-container">
+                    <button >Close</button>
+
+                    {showModal && (
+                        <div className="modal">
+                            <div className="modal-header">
+                                <p className="otp-text">An OTP has been sent to your email address.</p>
+                                <button onClick={() => setShowModal(false)}>Close</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+                
                 <Button 
                     name="Sign up"
                     width="72%"
@@ -158,8 +209,7 @@ function SignUp(){
                     cursor="pointer"
                     margin-top="20px"
                     type="submit"
-                    to="/OTP"
-                    onClick={postData}   
+                    passData={postData}
                 />                  
             </div>
         </div>

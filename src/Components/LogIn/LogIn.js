@@ -3,7 +3,7 @@ import LoginImg from '../Assets/login.jpeg'
 import "./LogIn.css";
 import { useNavigate } from "react-router-dom";
 import { Link} from "react-router-dom";
-import Verification from "../Verification/Verification";
+
 import Button from "../ReUsableComponent/Button";
 
 
@@ -45,27 +45,34 @@ function Login() {
           "Content-type": "application/json",
         },
       })
-      if (response.status === 401) {
-        setErrorMessage("Incorrect password");
-        return;
-      }
-      if (response.status === 404) {
-        setErrorMessage("Email not found");
-        return;
-      }
-      if (!response.ok){
-        throw new Error("Something went wrong")
-      }
-      const data = await response.json();
-      console.log(data);
-      setShowDashboard(true);
-      console.log("Login successful", data);
-    
+      .then(response => {
+        if (!response.ok){
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .then(data => {
+        console.log(data);
+        setShowDashboard(true);
+        console.log("Login successful", data);
+      })
+      .catch(error => {
+        if (error.message === "Unauthorized"){
+          setErrorMessage("Incorrect password");
+          console.log("Incorrect password");
+        } else if (error.message === "Not Found"){
+          setErrorMessage("Email not found");
+          console.log("Email not found");
+        } else {  
+          setErrorMessage("Incorrect email");
+          console.log("Incorrect email");
+        }
+      })
     } catch (error) {
-      setErrorMessage("Incorrect email");
+      setErrorMessage(error.message);
     }
   }
-
+      
  
   // const handleSubmit =  async (event) => {
   //   event.preventDefault();

@@ -3,8 +3,8 @@ import { Link} from "react-router-dom";
 import  {useNavigate } from 'react-router-dom';
 import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
-import Verification from "../Verification/Verification";
 import Button from "../ReUsableComponent/Button";
+import Modal from "./SignupModal";
 
 
 function SignUp(){
@@ -20,7 +20,7 @@ function SignUp(){
 
     const [showModal, setShowModal] = useState(false);
 
-    const toggleModal = () => setShowModal(!showModal);
+    // const toggleModal = () => setShowModal(!showModal);
 
     
     const [alert, setAlert] = useState(false);
@@ -66,7 +66,7 @@ function SignUp(){
       setAlert(true);
       return;
     }
-    setShowModal(true)
+    // setShowModal(true)
 
     navigate("/OTP", {
       state: {
@@ -74,37 +74,9 @@ function SignUp(){
         password: usersDetail.password
       }
     });
-    toggleModal();
+    // toggleModal();
     
   };
-  
-//   {alert && (
-//     <div className="alert">
-//       Email already exists.
-//     </div>
-//   )}
-  
-
-//    const postData = async (event) => {
-//     event.preventDefault();
-//        console.log(usersDetail)
-//        const response = await fetch(url, {
-//            method: 'POST',
-//            body: JSON.stringify(usersDetail),
-//            headers: {
-//                "Content-type": "application/json"
-//            }
-//        })
-//        const data = await response.json()
-//        console.log(data)
-//        navigate("/OTP", {
-//         state:{
-//             emailAddress: usersDetail.emailAddress,
-//             password: usersDetail.password
-//         }
-//        })
-
-//     }
     
     return(
         <div className="signup-container">
@@ -116,12 +88,12 @@ function SignUp(){
                 <h2 className='header-texts'>Welcome!</h2>
                 <h4 className="headers-paragraph">Sign up by entering the information below</h4>
                 <div className="form-container">
-                {alert && (<div className="alert"> Email already exists.</div>)}
-  
+                  {/* {alert &&  usersDetail.emailAddress ? (<div className="alert"> Email already exists.</div>) &&  usersDetail.password ? (<div className="alert"> Password already exists.</div>) : null : null } */}
+                  {alert &&  usersDetail.emailAddress ? (<div className="alert"> Email already exists.</div>) : null }
+                    {alert &&  usersDetail.password ? (<div className="alert"> Password already exists.</div>) : null }
                     <form 
                         method="post"
                         className="sign-up-form"
-                        
                         >
                         <label>
                             <input 
@@ -182,38 +154,30 @@ function SignUp(){
                         
                     </p>
                 </div>
-                <div className="modal-container">
-                    <button >Close</button>
-
-                    {showModal && (
-                        <div className="modal">
-                            <div className="modal-header">
-                                <p className="otp-text">An OTP has been sent to your email address.</p>
-                                <button onClick={() => setShowModal(false)}>Close</button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-                
-                <Button 
-                    name="Sign up"
-                    width="72%"
-                    height="65px"
-                    backgroundColor="#55229e"
-                    border="none"
-                    outline="none"
-                    color="white"
-                    borderRadius="10px"
-                    padding="20px"
-                    fontSize="large"
-                    cursor="pointer"
-                    margin-top="20px"
-                    type="submit"
-                    passData={postData}
-                />                  
+                <div className="modal-container">  
+                    <Button 
+                        name="Sign up"
+                        width="72%"
+                        height="65px"
+                        backgroundColor="#55229e"
+                        border="none"
+                        outline="none"
+                        color="white"
+                        borderRadius="10px"
+                        padding="20px"
+                        fontSize="large"
+                        cursor="pointer"
+                        margin-top="20px"
+                        type="submit"
+                        passData={postData}
+                        onClick={() => setShowModal(true)}
+                    />
+                    <Modal  show={showModal}/>
+                </div>                 
             </div>
         </div>
     </div>
+    
 )
 }
 

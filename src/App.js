@@ -20,6 +20,9 @@ function App() {
             <Route path="/OTP"  element={<OTP /> } />
             <Route path="/Verification" element={<Verification/>} />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
+            <Route path="/ResetPassword" element={<ForgetPassword/>} />
+            <Route path="/VerifyOTP" element={<ForgetPassword/>} />
+            <Route path="*" element={<LogIn/>} />
           </Routes>
       </Router>
   );

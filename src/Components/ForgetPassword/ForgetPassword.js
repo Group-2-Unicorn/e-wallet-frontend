@@ -1,17 +1,41 @@
 import "./ForgetPassword.css";
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ResetImg from "../Assets/resetPassword.png";
 import flowImage from "../Assets/resetFlow.png";
 import Button from "../ReUsableComponent/Button";
 import ImageCard from "../ReUsableComponent/ImageCard";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
+  const [emailAddress, setEmailAddress] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setMessage("Password reset token sent to your mail");
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://aa94-154-113-161-131.eu.ngrok.io/api/v1/forgot-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ emailAddress }),
+      });
+
+      if (response.status === 200) {
+        navigate('/VerifyOTP');
+      } else {
+        setError(await response.json());
+      }
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -28,16 +52,17 @@ const ForgotPassword = () => {
           <img className="header-reset-flow-image" src={flowImage} alt="" />
           <p className="header-password-paragraph">Enter Email Address to reset Password</p>
 
-          <form className="forms">
+          <form className="forms" onSubmit={handleSubmit}>
             <label>  
               <input
+                type="email"                
                 className="reset-email-input"
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                value={emailAddress}
+                onChange={(event) => setEmailAddress(event.target.value)}
                 placeholder="Email address"
                 required
               />
+              {error && <p>{error}</p>}
             </label>
             <Button
               name="NEXT"
@@ -54,8 +79,8 @@ const ForgotPassword = () => {
               marginTop="20px"
               type="submit"
               onSubmit={handleSubmit}
+              disabled={loading}
             />
-            {message && <p>{message}</p>}
           </form>
       </div>
     </div>

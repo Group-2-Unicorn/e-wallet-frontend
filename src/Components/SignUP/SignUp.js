@@ -5,6 +5,7 @@ import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
 import Button from "../ReUsableComponent/Button";
 import Modal from "./SignupModal";
+import SignupModal from "./SignupModal";
 
 
 function SignUp(){
@@ -18,9 +19,9 @@ function SignUp(){
 
     const navigate = useNavigate();
 
-    const [showModal, setShowModal] = useState(false);
+    const [show, setShow] = useState(false);
 
-    // const toggleModal = () => setShowModal(!showModal);
+    //const toggleModal = () => setShowModal(!showModal);
 
     
     const [alert, setAlert] = useState(false);
@@ -76,109 +77,136 @@ function SignUp(){
     });
     // toggleModal();
     
+    
   };
     
-    return(
-        <div className="signup-container">
-            <div className="sign-up-left-container"> 
-                <img className="logo" src={image} alt=""/>
-            </div>
-
-            <div className="sign-up-right-container">
-                <h2 className='header-texts'>Welcome!</h2>
-                <h4 className="headers-paragraph">Sign up by entering the information below</h4>
-                <div className="form-container">
-                  {/* {alert &&  usersDetail.emailAddress ? (<div className="alert"> Email already exists.</div>) &&  usersDetail.password ? (<div className="alert"> Password already exists.</div>) : null : null } */}
-                  {alert &&  usersDetail.emailAddress ? (<div className="alert"> Email already exists.</div>) : null }
-                    {alert &&  usersDetail.password ? (<div className="alert"> Password already exists.</div>) : null }
-                    <form 
-                        method="post"
-                        className="sign-up-form"
-                        >
-                        <label>
-                            <input 
-                                className="firstName"
-                                value={usersDetail.firstName} 
-                                onChange={handleChange}
-                                name="firstName"
-                                type="text"
-                                placeholder="First Name"
-                                required
-                            />
-                        </label>
-
-                        <label>
-                            <input 
-                                className="lastName"
-                                value={usersDetail.lastName} 
-                                onChange={handleChange}
-                                type="text"
-                                name="lastName"
-                                placeholder="Last Name"
-                                required
-                            />
-                        </label>
-                        
-                        <label>
-                            <input 
-                                className="email"
-                                type="email"
-                                value={usersDetail.emailAddress} 
-                                onChange={handleChange}
-                                name="emailAddress"
-                                placeholder="email"
-                                required
-                            />
-                        </label>
-
-                        <label>
-                            <input 
-                                className="passwords"
-                                value={usersDetail.password} 
-                                onChange={handleChange}
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                required
-                            />
-                        </label>
-                    </form>
-            
-                <div className="options-container">
-                    <p className='signup-option'>Already have an account?</p>
-                    <p>
-                        <Link to="/LogIn" className="login-option" style={{textDecoration: "none"}}>
-                            {""}
-                             <span className="login-option">Login</span>
-                        </Link>
-                        
-                    </p>
-                </div>
-                <div className="modal-container">  
-                    <Button 
-                        name="Sign up"
-                        width="72%"
-                        height="65px"
-                        backgroundColor="#55229e"
-                        border="none"
-                        outline="none"
-                        color="white"
-                        borderRadius="10px"
-                        padding="20px"
-                        fontSize="large"
-                        cursor="pointer"
-                        margin-top="20px"
-                        type="submit"
-                        passData={postData}
-                        onClick={() => setShowModal(true)}
-                    />
-                    <Modal  show={showModal}/>
-                </div>                 
-            </div>
+    return (
+      <div className="signup-container">
+        <div className="sign-up-left-container">
+          <img className="logo" src={image} alt="" />
         </div>
-    </div>
-    
-)
+
+        <div className="sign-up-right-container">
+          <h2 className="header-texts">Welcome!</h2>
+          <h4 className="headers-paragraph">
+            Sign up by entering the information below
+          </h4>
+          <div className="form-container">
+            {alert && usersDetail.emailAddress ? (
+              <div className="alert"> Email already exists.</div>
+            ) : null}
+            {alert && usersDetail.password ? (
+              <div className="alert"> Password already exists.</div>
+            ) : null}
+            <form method="post" className="sign-up-form">
+              <label>
+                <input
+                  className="firstName"
+                  value={usersDetail.firstName}
+                  onChange={handleChange}
+                  name="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  required
+                />
+              </label>
+
+              <label>
+                <input
+                  className="lastName"
+                  value={usersDetail.lastName}
+                  onChange={handleChange}
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  required
+                />
+              </label>
+
+              <label>
+                <input
+                  className="email"
+                  type="email"
+                  value={usersDetail.emailAddress}
+                  onChange={handleChange}
+                  name="emailAddress"
+                  placeholder="email"
+                  required
+                />
+              </label>
+
+              <label>
+                <input
+                  className="passwords"
+                  value={usersDetail.password}
+                  onChange={handleChange}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+              </label>
+            </form>
+
+            <div className="options-container">
+              <p className="signup-option">Already have an account?</p>
+              <p>
+                <Link
+                  to="/LogIn"
+                  className="login-option"
+                  style={{ textDecoration: "none" }}
+                >
+                  {""}
+                  <span className="login-option">Login</span>
+                </Link>
+              </p>
+            </div>
+            <Button
+              name="Sign up"
+              width="72%"
+              height="65px"
+              backgroundColor="#55229e"
+              border="none"
+              outline="none"
+              color="white"
+              borderRadius="10px"
+              padding="20px"
+              fontSize="large"
+              cursor="pointer"
+              margin-top="20px"
+              type="submit"
+            //   onClick={postData}
+              onClick={() => {
+                postData();
+                setShow(true);
+              }}
+            >
+              {""}
+            </Button>
+            {/* <Button
+              name="Sign up"
+              width="72%"
+              height="65px"
+              backgroundColor="#55229e"
+              border="none"
+              outline="none"
+              color="white"
+              borderRadius="10px"
+              padding="20px"
+              fontSize="large"
+              cursor="pointer"
+              margin-top="20px"
+              type="submit"
+              passData={postData}
+            /> */}
+            <div className="modal-container">
+              <button onClick={() => setShow(true)}> Show Modal</button>
+              <SignupModal show={show} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
 }
 
 export default SignUp;

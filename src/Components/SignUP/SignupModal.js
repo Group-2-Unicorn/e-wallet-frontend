@@ -2,9 +2,9 @@ import React from "react";
 import "./Modal.css";
 
 
-const SignupModal = (props) => {
+const SignupModal = props => {
 
-    if(!props.showModal) {
+    if(!props.show) {
         return null;
     }
 
@@ -13,17 +13,10 @@ const SignupModal = (props) => {
   return (
     <div className="modal">
         <div className="modal-content">
-            <div className="modal-header">
-                <h1 className="modal-title">Sign Up</h1>
-            </div>
             <div className="modal-body">
-                hsdjkhdjfjsk
-            </div>
-            <div className="modal-footer">
-                <button className="modal-close-btn">Close</button>
+            Kindly Check your mail to see your OTP number for Account verification 
             </div>
         </div>
-      <h1>Hello</h1>
     </div>
   );
 }

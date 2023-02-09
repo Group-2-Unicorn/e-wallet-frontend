@@ -7,6 +7,8 @@ import SignUp from "./Components/SignUP/SignUp";
 import Verification from "./Components/VerifyPage/Verification";
 import OTP from "./Components/OTPInputPage/OTP";
 import Dashboard from "./Components/Dashboard/Dashboard"
+import ResetPassword from "./Components/ForgetPassword/ResetPassword";
+import VerifyOTP from "./Components/ForgetPassword/VerifyOTP"
 
 function App() {
   
@@ -20,9 +22,8 @@ function App() {
             <Route path="/OTP"  element={<OTP /> } />
             <Route path="/Verification" element={<Verification/>} />
             <Route path="/ForgetPassword" element={<ForgetPassword/>} />
-            <Route path="/ResetPassword" element={<ForgetPassword/>} />
-            <Route path="/VerifyOTP" element={<ForgetPassword/>} />
-            <Route path="*" element={<LogIn/>} />
+            <Route path="/ResetPassword" element={<ResetPassword/>} />
+            <Route path="/VerifyOTP" element={<VerifyOTP/>} />
           </Routes>
       </Router>
   );

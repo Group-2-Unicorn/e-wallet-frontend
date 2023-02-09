@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import otpimage from "../Assets/otpimage.png";
+import Image from '../ReUsableComponent/ImageCard';
+
+
 
 const VerifyOTP = () => {
   const [otp, setOtp] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
     const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
+    // setLoading(true);
 
     try {
       const response = await fetch('https://aa94-154-113-161-131.eu.ngrok.io/api/v1/forgot-password/verify-otp', {
@@ -29,24 +33,30 @@ const VerifyOTP = () => {
       }
     } catch (e) {
       setError(e.message);
-    } finally {
-      setLoading(false);
+    // } finally {
+    //   setLoading(false);
     }
    
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={otp}
-        onChange={(e) => setOtp(e.target.value)}
-      />
-      {error && <p>{error}</p>}
-      <button type="submit" disabled={loading}>
-        Verify OTP
-      </button>
-    </form>
+    <div className='verify-otp-container'>
+      <div className="sign-up-left-container">
+          <Image className="logo" src={otpimage} alt="" />
+        </div>
+      
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+        />
+        {error && <p>{error}</p>}
+        <button type="submit">
+          Verify OTP
+        </button>
+      </form>
+    </div>
   );
 };
 

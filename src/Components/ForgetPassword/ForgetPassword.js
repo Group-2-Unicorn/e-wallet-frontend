@@ -27,7 +27,7 @@ const ForgotPassword = () => {
       });
 
       if (response.status === 200) {
-        navigate('/VerifyOTP');
+        navigate("/VerifyOTP");
       } else {
         setError(await response.json());
       }
@@ -79,7 +79,7 @@ const ForgotPassword = () => {
               marginTop="20px"
               type="submit"
               onSubmit={handleSubmit}
-              disabled={loading}
+              // disabled={loading}
             />
           </form>
       </div>

@@ -175,30 +175,10 @@ function SignUp(){
               cursor="pointer"
               margin-top="20px"
               type="submit"
-            //   onClick={postData}
-              onClick={() => {
-                postData();
-                setShow(true);
-              }}
+              postData={postData}
             >
               {""}
             </Button>
-            {/* <Button
-              name="Sign up"
-              width="72%"
-              height="65px"
-              backgroundColor="#55229e"
-              border="none"
-              outline="none"
-              color="white"
-              borderRadius="10px"
-              padding="20px"
-              fontSize="large"
-              cursor="pointer"
-              margin-top="20px"
-              type="submit"
-              passData={postData}
-            /> */}
             <div className="modal-container">
               <button onClick={() => setShow(true)}> Show Modal</button>
               <SignupModal show={show} />

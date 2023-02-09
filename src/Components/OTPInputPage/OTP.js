@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./otp.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Image from "../ReUsableComponent/ImageCard";
+import otpimage from "../Assets/otpimage.png";
+
+
+
+
+
+
 function Verification({ emailAddress, password }) {
   const [alert, setAlert] = useState("");
   const [otpInputFields, setOtpInputFields] = useState([
@@ -9,6 +18,8 @@ function Verification({ emailAddress, password }) {
     { name: "field3", value: "" },
     { name: "field4", value: "" },
   ]);
+
+  const navigate = useNavigate();
 
   const handleOtpInputChange = (event, index) => {
     const newOtpInputFields = [...otpInputFields];
@@ -36,7 +47,7 @@ function Verification({ emailAddress, password }) {
     const { data } = response;
     console.log(data);
     if (data.message === "Verified") {
-      window.location = "/";
+      navigate("/");
     } else {
       setAlert("Invalid OTP");
     }
@@ -44,6 +55,9 @@ function Verification({ emailAddress, password }) {
 
   return (
     <div className="verification-container">
+      <div className="sign-up-left-container">
+          <Image className="logo" src={otpimage} alt="" />
+        </div>
       <h2 className="header-text">Verify your email address</h2>
       <h4 className="header-text-paragraph">
         We've sent an OTP to your email address

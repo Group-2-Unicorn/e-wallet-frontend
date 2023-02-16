@@ -3,7 +3,6 @@ import LoginImg from '../Assets/login.jpeg'
 import "./LogIn.css";
 import { useNavigate } from "react-router-dom";
 import { Link} from "react-router-dom";
-
 import Button from "../ReUsableComponent/Button";
 
 
@@ -72,30 +71,6 @@ function Login() {
       setErrorMessage(error.message);
     }
   }
-      
- 
-  // const handleSubmit =  async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const response = await fetch(BASE_URL, {
-  //       method: "POST",
-  //       body: JSON.stringify(userLoginDetail),
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //     })
-  //     if (!response.ok){
-  //       throw new Error("Something went wrong")
-  //     }
-  //     const data = await response.json();
-  //     console.log(data);
-  //     setShowDashboard(true);
-  //     console.log("Login successful", data);
-    
-  //   } catch (error) {
-  //     setErrorMessage(error.message);
-  //   }
-  // }
 
   const login = (event) =>{
     handleSubmit(event)

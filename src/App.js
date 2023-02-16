@@ -11,7 +11,6 @@ import ResetPassword from "./Components/ForgetPassword/ResetPassword";
 import VerifyOTP from "./Components/ForgetPassword/VerifyOTP"
 
 function App() {
-  
   return (
       <Router>
           <Routes>

@@ -1,131 +1,172 @@
 import React, { useState } from "react";
+import LoginImg from '../Assets/login.jpeg'
 import "./LogIn.css";
-import { Link } from "react-router-dom";
-import LoginImg from "../Assets/login.jpeg";
 import { useNavigate } from "react-router-dom";
-import { isValidDateValue } from "@testing-library/user-event/dist/utils";
+import { Link} from "react-router-dom";
+import Button from "../ReUsableComponent/Button";
 
 
-function LogIn() {
-  
+
+function Login() {
   const [userLoginDetail, setUserLoginDetail] = useState({
+    emailAddress: "",
     password: "",
-    emailAddress: ""
   });
   
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false)
+
+
   const navigate = useNavigate();
 
-    // const [user, setUser] = React.useState();
-  
+  const BASE_URL = "https://aa94-154-113-161-131.eu.ngrok.io/api/v1/users/login";
 
-  
-
-    const handleChange = (event) => {
-      const {name, value} = event.target
-      setUserLoginDetail((prevState) => {
-          return {
-              ...prevState,
-              [name]: value
-          }
-      })
-    }
-    
-   
-
-  const baseUrl = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/users/login";
-
-  const validateUser = async (event) => {
-    event.preventDefault()
-       console.log(userLoginDetail)
-       const response = await fetch(baseUrl, {
-           method: 'POST',
-           body: JSON.stringify(userLoginDetail),
-           headers: {
-               "Content-type": "application/json"
-           }
-       })
-       const data = await response.json()
-       console.log(data)
-       navigate("/Dashboard", {
-        state:{
-            emailAddress: userLoginDetail.emailAddress,
-            password: userLoginDetail.password
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setUserLoginDetail((prevState) => {
+        return {
+            ...prevState,
+            [name]: value
         }
-       })
+    })
   }
 
-    return (
-      <div className="login-container">
-        <div className="login-left-container">
-          <img className="image-container" src={LoginImg} alt=""/>
-        </div>
-        <div className="login-right-container">
-          <h2 className="header-text">Welcome Back!</h2>
-          <h4 header-paragraph>Log in to your Dashboard</h4>
-          <div className="signup-form-container">
-            <form id="stripe-login" method="POST">
-              <label>
-                <input
-                  placeholder="Email"
-                  className="email_box"
-                  name="emailAddress"
-                  type="email"
-                  onChange={handleChange}
-                  value={userLoginDetail.emailAddress ? userLoginDetail.emailAddress : ''} 
-                  required
-                  
-                />
-              </label>
-              <div>
-              <label>
-                <input
-                  placeholder="Password"
-                  className="password_box"
-                  
-                  type="password"
-                  name="password"
-                  value={userLoginDetail.password ? userLoginDetail.password : isValidDateValue} 
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              
-              </div> 
-            </form>
-            <div className="checker-container">
-              <div className="checker">
-                <input type="checkbox" />
-                {/* value={validateUser.rememberMe} */}
 
-                <span className="rem-me">Remember Me</span>
+  const handleSubmit =  async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(BASE_URL, {
+        method: "POST",
+        body: JSON.stringify(userLoginDetail),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+      .then(response => {
+        if (!response.ok){
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .then(data => {
+        console.log(data);
+        setShowDashboard(true);
+        console.log("Login successful", data);
+      })
+      .catch(error => {
+        if (error.message === "Unauthorized"){
+          setErrorMessage("Incorrect password");
+          console.log("Incorrect password");
+        } else if (error.message === "Not Found"){
+          setErrorMessage("Email not found");
+          console.log("Email not found");
+        } else {  
+          setErrorMessage("Incorrect email");
+          console.log("Incorrect email");
+        }
+      })
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+  }
+
+  const login = (event) =>{
+    handleSubmit(event)
+    if (showDashboard){
+      navigate("/Dashboard", {
+        state: {
+          emailAddress: userLoginDetail.emailAddress,
+          password: userLoginDetail.password
+        }
+      })
+    }
+  }
+  
+
+  return (
+    <div className="login-container">
+      <div className="login-left-container">
+        <img className="image-container" src={LoginImg} alt=""/>
+      </div>
+      <div className="login-right-container">
+        <h2 className="header-text">Welcome Back!</h2>
+        <h4 className="header-paragraph">Log in to your Dashboard</h4>
+        {/* {showDashboard === false ? errorMessage : ""} */}
+        {showDashboard === false ? errorMessage && <p className="error" >{errorMessage}</p> : ""}
+        
+        <div className="login_form-container">
+          <form onSubmit={login}>
+            <label>
+              <input
+                type="email"
+                className="email"
+                name="emailAddress"
+                placeholder="Email"
+                onChange={handleChange}
+                value={userLoginDetail.emailAddress || ""}
+              />
+            </label>
+            <label>
+              <input
+                className="password-input"
+                placeholder="Password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={userLoginDetail.password || ""}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <div className="checker-forgot-password-container">
+              <div className="checker">
+                <input  
+                  className="checkbox"
+                  onChange={() => setShowPassword(!showPassword)}
+                  type="checkbox"  />
+                <label className="rem-me">Remember me</label>
               </div>
-              <div>
-                <p>                
-                  <Link
-                    className="password"
-                    to="/ForgetPassword"
-                    style={{ textDecoration: "none" }}
-                  >
-                    {""}
-                    Forget Password?
-                  </Link>
-                  </p>
-              </div>
-            </div>
-            <button onClick={handleChange} className="login-submit-button" >
-            <Link to="/Dashboard">
+            <div className="forgot-password">
+              <p>
+                <Link className="forgot-password-link" to="/ForgetPassword" style={{textDecorator: 'none'}}>
                   {""}
-                  <span className="login-submit-text">Log In</span>
+                  Forgot Password?
                 </Link>
-               
-            </button>
-            <div className="sign-up-container">
-              <p className="create-account-option">Don't have an Account?</p>
+              </p>
             </div>
+            </div>
+            <Button 
+              name="Login"
+              width="77%"
+              height="65px"
+              backgroundColor="#55229e"
+              border="none"
+              outline="none"
+              color="white"
+              borderRadius="10px"
+              padding="20px"
+              fontSize="large"
+              cursor="pointer"
+              margin-top="20px"
+              type="submit"
+            />
+            
+          </form>
+        
+          <div className="login-container">
+            <p className="create-account-options">Don't have an Account?</p>
+              <p>
+               <Link to="/SignUp">
+                 {""}
+                 <span className="sign-up-text">Sign Up</span>
+               </Link>
+             </p>
+          </div>
         </div>
         </div>
       </div>
-    );
-  }
+  );
+}
 
-export default LogIn;
+export default Login;

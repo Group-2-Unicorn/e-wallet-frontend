@@ -1,77 +1,87 @@
-import { Link, useLocation } from "react-router-dom";
-import './otp.css'
-import React, {useState, useEffect} from 'react';
-import image from "../Assets/img.jpeg";
+import React, { useState, useEffect } from "react";
+import "./otp.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Image from "../ReUsableComponent/ImageCard";
+import otpimage from "../Assets/otpimage.png";
 
 
-const OTP = () => {
-    const [otp, setOtp] = useState("");
-    const location = useLocation()
-    const {emailAddress} = location.state
-    const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/verify"
 
-    const verify = async (par) => {
-        const response = await fetch( url, {
-            method: 'POST',
-            body: JSON.stringify(par),
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
-        const data = await response.json()
-        console.log(data)
+
+
+
+function Verification({ emailAddress, password }) {
+  const [alert, setAlert] = useState("");
+  const [otpInputFields, setOtpInputFields] = useState([
+    { name: "field1", value: "" },
+    { name: "field2", value: "" },
+    { name: "field3", value: "" },
+    { name: "field4", value: "" },
+  ]);
+
+  const navigate = useNavigate();
+
+  const handleOtpInputChange = (event, index) => {
+    const newOtpInputFields = [...otpInputFields];
+    newOtpInputFields[index].value = event.target.value;
+    setOtpInputFields(newOtpInputFields);
+  };
+
+  const OTP = otpInputFields.map((input) => input.value).join("");
+
+  useEffect(() => {
+    if (alert) {
+      setTimeout(() => {
+        setAlert("");
+      }, 3000);
     }
+  }, [alert]);
 
-    const postData = () => {
-        const otpObj = {
-            emailAddress: emailAddress,
-            oneTimePassword: otp
-        }
-        console.log(otpObj)
-        verify(otpObj)
+  const verifyOTP = async () => {
+    const response = await axios.post("https://aa94-154-113-161-131.eu.ngrok.io/api/v1/registration/verify", {
+      emailAddress,
+      password,
+      OTP,
+    });
+
+    const { data } = response;
+    console.log(data);
+    if (data.message === "Verified") {
+      navigate("/");
+    } else {
+      setAlert("Invalid OTP");
     }
-    const handleOtp = (event) => {
-        const {value} = event.target
-        setOtp(value)
-    }
+  };
 
-    return (
-        <div className="otp-container">
-            <div className="otp-left-side"> 
-                <img className="image" src={image} alt=""/>
-            </div>
-
-            <div className="otp-right-container">
-                <div className="otp-form-container">
-                    <div className="otp-right-side">
-                        <p className='otp-text'>Enter your OTP number</p>
-                    </div>
-                    <div className="otp-form-div">
-
-                    <form>
-                        <input
-                            type="text"
-                            onClick={verify}
-                            placeholder="-"
-                            required
-                            value={otp}
-                            onChange={handleOtp}
-                        />
-                        </form>
-                        <button 
-                            to="/LogIn" 
-                            onClick={postData} 
-                            className="otp-btn">
-                            <Link to="/LogIn">
-                            {""}
-                            Continue
-                        </Link>
-                    </button>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="verification-container">
+      <div className="sign-up-left-container">
+          <Image className="logo" src={otpimage} alt="" />
         </div>
-    );
+      <h2 className="header-text">Verify your email address</h2>
+      <h4 className="header-text-paragraph">
+        We've sent an OTP to your email address
+      </h4>
+      <div className="form-container">
+        {alert && <div className="alert">{alert}</div>}
+        <form className="verification-form">
+          {otpInputFields.map((input, index) => (
+            <label key={input.name}>
+              <input
+                type="text"
+                maxLength="1"
+                value={input.value}
+                onChange={(event) => handleOtpInputChange(event, index)}
+                required
+              />
+            </label>
+          ))}
+          <button onClick={verifyOTP}>Verify</button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
-export default OTP;
+export default Verification;
+

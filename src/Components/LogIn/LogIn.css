@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.error-message {
+.error {
   color: red;
   font-size: 12px;
   margin-top: 5px;
@@ -21,6 +21,8 @@
 
 .header-text {
   height: 36px;
+  display: flex;
+  justify-content: center;
   left: 1123px;
   top: 242px;
   font-family: 'Roboto';
@@ -34,7 +36,6 @@
 }
 
 .header-paragraph {
-  width: 467.42px;
   height: 24px;
   left: 1042.11px;
   top: 305.09px;
@@ -45,8 +46,6 @@
   font-size: 20.546px;
   line-height: 24px;
   /* identical to box height */
-
-  display: flex;
   align-items: flex-end;
   text-align: center;
 
@@ -54,16 +53,6 @@
 
 }
 
-input.password_box{
-  left: 59.09%;
-  right: 10.36%;
-  top: 36.53%;
-  bottom: 56.94%;
-
-  background: #FFFFFF;
-  border: 1.71217px solid #C4C4C4;
-  border-radius: 13.6973px;
-}
 
 .image-container {
   width: 100%;
@@ -87,7 +76,7 @@ input.password_box{
 }
 
 
-.email_box{
+.email{
   width: 70%;
   height: 25px;
   border: 1px solid #c4c4c4;
@@ -97,7 +86,7 @@ input.password_box{
   outline: none;
 }
 
-.password_box{
+.password-input{
   width: 70%;
   height: 25px;
   border: 1px solid #c4c4c4;
@@ -107,7 +96,7 @@ input.password_box{
   outline: none;
 }
 
-.checker-container {
+.checker-forgot-password-container {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -121,7 +110,7 @@ input.password_box{
   justify-content: center;
 }
 
-input.check-box{
+.checkbox{
   background-color: #55229e;
 }
 
@@ -165,15 +154,23 @@ input.check-box{
   color: #FFFFFF;
 }
 
-.sign-up-container{
+.login-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sign-up-containers{
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 20px;
 }
 
-.create-account-option{
+.create-account-options{
   width: 253px;
   height: 33px;
 
@@ -193,6 +190,15 @@ input.check-box{
   flex-grow: 0;
 }
 
+.login-container{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-items: center;
+  justify-content: space-evenly;
+
+}
+
 .sign-up-text{
   
 width: 85px;
@@ -209,8 +215,6 @@ text-align: right;
 text-decoration-line: underline;
 
 color: #55229E;
-
-
 /* Inside auto layout */
 
 flex: none;
@@ -218,24 +222,14 @@ order: 1;
 flex-grow: 0;
 }
 
-.password{
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 27.3947px;
-  line-height: 32px;
-  display: flex;
-  align-items: flex-end;
-
-  color: rgba(0, 0, 0, 0.6);
-
-
-}
 
 @media (min-width: 600px) and (max-width:1200px){
   .image-container, .login-right-container {
     width: 100%;
-    /* height: 260vh; */
+    height: 100vh;
+   
   } 
   
 }
+
+

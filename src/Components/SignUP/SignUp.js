@@ -1,22 +1,33 @@
 import "./SignUp.css";
-import { json, Link} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
+import  {useNavigate } from 'react-router-dom';
 import image from "../Assets/img.jpeg";
 import React, {useState, useEffect} from 'react';
-import Verification from "../Verification/Verification";
+import Button from "../ReUsableComponent/Button";
+import Modal from "./SignupModal";
+import SignupModal from "./SignupModal";
+
 
 function SignUp(){
+   
     const [usersDetail, setUsersDetail] = useState({
         firstName: "",
         lastName: "",
         emailAddress: "",
         password: ""
-    }
-    )
+    })
+
+    const navigate = useNavigate();
+
+    const [show, setShow] = useState(false);
+
+    //const toggleModal = () => setShowModal(!showModal);
 
     
     const [alert, setAlert] = useState(false);
-    const navigate = useNavigate()
+
+    
+
     useEffect(() => {
         if(alert) {
             setTimeout(() => {
@@ -25,9 +36,6 @@ function SignUp(){
             }, 3000)
         }
     }, [alert])
-
-
-    const [show, setShow] = useState(false);
 
 
    const handleChange = (event) => {
@@ -40,121 +48,145 @@ function SignUp(){
     })
    }
    
-   const url = "https://7f53-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
-   const postData = async (event) => {
-    event.preventDefault()
-       console.log(usersDetail)
-       const response = await fetch(url, {
-           method: 'POST',
-           body: JSON.stringify(usersDetail),
-           headers: {
-               "Content-type": "application/json"
-           }
-       })
-       const data = await response.json()
-       console.log(data)
-       navigate("/OTP", {
-        state:{
-            emailAddress: usersDetail.emailAddress
-        }
-       })
+   const url = "https://aa94-154-113-161-131.eu.ngrok.io/api/v1/registration/register"
 
-   };
-    return(
-        <div className="signup-container">
-            <div className="sign-up-left-container"> 
-                <img className="logo" src={image} alt=""/>
-            </div>
+   const postData = async () => {
+    //event.preventDefault();
+    console.log(usersDetail)
+    console.log("clicked")
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(usersDetail),
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+    if (data.message === 'Email already exists') {
+      setAlert(true);
+      return;
+    }
+    // setShowModal(true)
 
-            <div className="sign-up-right-container">
-                <h2 className='header-texts'>Welcome!</h2>
-                <h4 className="headers-paragraph">Sign up by entering the information below</h4>
-                <div className="form-container">
-                    {/* {alert && <Verification onClose={() => setShow(false)} show={show}  />} */}
-                    <form 
-                        method="post"
-                        className="sign-up-form">
-                        <label>
-                            <input 
-                                className="firstName"
-                                value={usersDetail.firstName} 
-                                onChange={handleChange}
-                                name="firstName"
-                                type="text"
-                                placeholder="First Name"
-                                required
-                            />
-                        </label>
-
-                        <label>
-                            <input 
-                                className="lastName"
-                                value={usersDetail.lastName} 
-                                onChange={handleChange}
-                                type="text"
-                                name="lastName"
-                                placeholder="Last Name"
-                                required
-                            />
-                        </label>
-                        
-                        <label>
-                            <input 
-                                className="email"
-                                type="email"
-                                value={usersDetail.emailAddress} 
-                                onChange={handleChange}
-                                name="emailAddress"
-                                placeholder="email"
-                                required
-                            />
-                        </label>
-
-                        <label>
-                            <input 
-                                className="passwords"
-                                value={usersDetail.password} 
-                                onChange={handleChange}
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                required
-                            />
-                        </label>
-                    </form>
-            
-                <div className="options-container">
-                    <p className='signup-option'>Already have an account?</p>
-                    <p>
-                        <Link to="/LogIn" className="login-option" style={{textDecoration: "none"}}>
-                            {""}
-                            <span className="login-option">Login</span> 
-                        </Link>
-                        
-                    </p>
-                </div>
-                <button 
-                    to="/OTP"
-                    className="signup-submit-button"
-                    type="submit"
-                    onClick={postData}
-                                       
-                    // style={{textDecoration: "none"}}
-                    >
-                       <Link to="/SignUp">
-                  {""}
-                  <span className="signup-submit-text">Sign Up</span>
-                </Link>
-                           
-                   
-                   
-                </button>
-                <Verification onClick={() => setShow(false)} show={show} />
-                   
-            </div>
+    navigate("/OTP", {
+      state: {
+        emailAddress: usersDetail.emailAddress,
+        password: usersDetail.password
+      }
+    });
+    // toggleModal();
+    
+    
+  };
+    
+    return (
+      <div className="signup-container">
+        <div className="sign-up-left-container">
+          <img className="logo" src={image} alt="" />
         </div>
-    </div>
-)
+
+        <div className="sign-up-right-container">
+          <h2 className="header-texts">Welcome!</h2>
+          <h4 className="headers-paragraph">
+            Sign up by entering the information below
+          </h4>
+          <div className="form-container">
+            {alert && usersDetail.emailAddress ? (
+              <div className="alert"> Email already exists.</div>
+            ) : null}
+            {alert && usersDetail.password ? (
+              <div className="alert"> Password already exists.</div>
+            ) : null}
+            <form method="post" className="sign-up-form">
+              <label>
+                <input
+                  className="firstName"
+                  value={usersDetail.firstName}
+                  onChange={handleChange}
+                  name="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  required
+                />
+              </label>
+
+              <label>
+                <input
+                  className="lastName"
+                  value={usersDetail.lastName}
+                  onChange={handleChange}
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  required
+                />
+              </label>
+
+              <label>
+                <input
+                  className="email"
+                  type="email"
+                  value={usersDetail.emailAddress}
+                  onChange={handleChange}
+                  name="emailAddress"
+                  placeholder="email"
+                  required
+                />
+              </label>
+
+              <label>
+                <input
+                  className="passwords"
+                  value={usersDetail.password}
+                  onChange={handleChange}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+              </label>
+            </form>
+
+            <div className="options-container">
+              <p className="signup-option">Already have an account?</p>
+              <p>
+                <Link
+                  to="/LogIn"
+                  className="login-option"
+                  style={{ textDecoration: "none" }}
+                >
+                  {""}
+                  <span className="login-option">Login</span>
+                </Link>
+              </p>
+            </div>
+            <Button
+              name="Sign up"
+              width="72%"
+              height="65px"
+              backgroundColor="#55229e"
+              border="none"
+              outline="none"
+              color="white"
+              borderRadius="10px"
+              padding="20px"
+              fontSize="large"
+              cursor="pointer"
+              margin-top="20px"
+              type="submit"
+              postData={postData}
+            >
+              {""}
+            </Button>
+            <div className="modal-container">
+              <button onClick={() => setShow(true)}> Show Modal</button>
+              <SignupModal show={show} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
 }
 
 export default SignUp;
